@@ -3,7 +3,8 @@ import folder from "../assets/folder.png";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-[#FDF9F5] px-8">
+    <section className="flex flex-col items-center text-center min-h-screen bg-[#FDF9F5] px-6 pt-0 -mt-8 relative">
+
         {/* Portfolio Title Image */}
         <div className="text-center mt-20">
             <h1 className="inline-flex items-end justify-center">
@@ -40,6 +41,16 @@ const Hero = () => {
         <p className="max-w-xs text-[#5862E9] text-center md:text-left text-sm md:text-base font-[Hanken_Grotesk] leading-relaxed">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
         </p>
+      </div>
+
+      {/* BUTTONS */}
+      <div className="flex flex-col md:flex-row items-center gap-4 mt-10">
+        <button className=" bg-[#5862E9] text-[#0A0F0D] px-6 py-1.5 rounded-full font-[Hanken Grotesk] text-sm md:text-base hover:bg-[#5862E9] transition-all duration-500 shadow-md">
+          Available for new opportunities
+        </button>
+        <button className="border-2 border-[#5862E9] text-[#0A0F0D] px-6 py-1.5 rounded-full font-[Hanken Grotesk] text-sm md:text-base hover:bg-[#5862E9] hover:text-[#0A0F0D] transition-all duration-300 shadow-md">
+          Contact
+        </button>
       </div>
     </section>
   );
