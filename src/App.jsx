@@ -3,15 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <div className="text-center p-10">
-      <h1 className="text-4xl font-bold text-indigo-600">
-        Tailwind + React setup successful 🎉
-      </h1>
-    </div>
+    <>
+      <Navbar />
+      {/* Other sections: Hero, About, etc. */}
+    </>
   );
 }
 
+export default App;
 
-export default App
