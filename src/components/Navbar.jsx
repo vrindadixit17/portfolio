@@ -1,105 +1,51 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "work", label: "Work" },
-  { id: "contact", label: "Contact" },
-];
-
-export default function Navbar() {
-  const containerRef = useRef(null);
-  const itemRefs = useRef([]);
-  const indicatorRef = useRef(null);
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoverIndex, setHoverIndex] = useState(null);
-
-  const getBoxForIndex = (index) => {
-    const container = containerRef.current;
-    const el = itemRefs.current[index];
-    if (!container || !el) return null;
-    const cRect = container.getBoundingClientRect();
-    const r = el.getBoundingClientRect();
-    return { left: r.left - cRect.left, width: r.width };
-  };
-
-  const moveIndicator = (toIndex) => {
-    const box = getBoxForIndex(toIndex);
-    const ind = indicatorRef.current;
-    if (!box || !ind) return;
-    ind.style.width = `${box.width}px`;
-    ind.style.transform = `translateX(${box.left}px)`;
-  };
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      moveIndicator(hoverIndex ?? activeIndex);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [activeIndex, hoverIndex]);
-
-  useEffect(() => {
-    if (hoverIndex !== null) moveIndicator(hoverIndex);
-    else moveIndicator(activeIndex);
-  }, [activeIndex, hoverIndex]);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16 relative">
-          {/* logo/name */}
-          <div className="text-xl font-semibold text-emerald-600">Vrinda</div>
+    <nav
+      className={`fixed top-0 right-0 w-full z-0 transition-all duration-500 ${
+        scrolled
+          ? "bg-cream/90 backdrop-blur-md shadow-md"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <h1 className="text-4xl font-italianno text-indigoMain tracking-wide">
+          vrinda
+        </h1>
 
-          {/* navigation */}
-          <nav ref={containerRef} className="relative">
-            {/* sliding indicator */}
-            <div
-              ref={indicatorRef}
-              className="pointer-events-none absolute -bottom-1 h-[3px] bg-emerald-500 rounded-full transition-all duration-300 ease-out"
-              style={{ width: 0, transform: "translateX(0px)" }}
-            />
+        {/* Nav Links */}
+        <ul className="hidden md:flex space-x-10 text-dark font-hanken text-[15px] font-medium">
+          {["Home", "About", "Works", "Services", "Contact"].map((item) => (
+            <li key={item} className="group relative cursor-pointer">
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="transition-colors duration-300 group-hover:text-indigoMain"
+              >
+                {item}
+              </a>
+              <span className="absolute left-0 -bottom-1 w-0 h-[1.5px] bg-indigoMain transition-all duration-300 group-hover:w-full"></span>
+            </li>
+          ))}
+        </ul>
 
-            <ul className="flex gap-6 px-4 py-2">
-              {navItems.map((item, i) => (
-                <li
-                  key={item.id}
-                  ref={(el) => (itemRefs.current[i] = el)}
-                  className="relative"
-                >
-                  <button
-                    onClick={() => setActiveIndex(i)}
-                    onMouseEnter={() => setHoverIndex(i)}
-                    onMouseLeave={() => setHoverIndex(null)}
-                    onFocus={() => setHoverIndex(i)}
-                    onBlur={() => setHoverIndex(null)}
-                    className={`px-2 py-1 text-sm font-medium transition-colors duration-150 focus:outline-none ${
-                      i === activeIndex
-                        ? "text-emerald-700"
-                        : "text-gray-700 hover:text-emerald-600"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* optional contact button */}
-          <div className="hidden md:block">
-            <a
-              href="#contact"
-              className="ml-4 px-4 py-1.5 rounded-md bg-emerald-600 text-white text-sm font-medium shadow-sm hover:bg-emerald-700 transition"
-            >
-              Contact
-            </a>
-          </div>
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex flex-col justify-center items-end space-y-[5px] cursor-pointer">
+          <span className="w-6 h-[2px] bg-dark"></span>
+          <span className="w-4 h-[2px] bg-dark"></span>
         </div>
       </div>
-    </header>
+    </nav>
   );
-}
+};
+
+export default Navbar;
