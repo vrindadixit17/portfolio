@@ -2,47 +2,76 @@ import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      // shrink navbar when scrolling
+      setScrolled(window.scrollY > 20);
+
+      // detect active section
+      const sections = ["home", "about", "works", "services", "contact"];
+      const scrollMid = window.scrollY + window.innerHeight / 2;
+
+      for (let sec of sections) {
+        const el = document.getElementById(sec);
+        if (!el) continue;
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollMid >= top && scrollMid < top + height) {
+          setActiveSection(sec);
+          break;
+        }
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-none transition-all duration-500"
+      className = "fixed top-5 left-0 w-full z-50 transition-all duration-500"
     >
-      <div className="max-w-7xl mx-auto px-8 py-2 flex items-center justify-between">
-        {/* LEFT: Logo */}
-        <div className="flex items-center space-x-2">
-          <h1 className="text-3xl font-italianno text-indigoMain tracking-wide">
-            vrinda
-          </h1>
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-50">
+        {/* Left - Logo */}
+        <div className="text-2xl font-italianno text-[#CDDF3D] text-[40px] tracking-wide">
+          vrinda
         </div>
 
-        {/* RIGHT: Nav Links inside a rounded container */}
-        <div className="hidden md:flex bg-white/80 backdrop-blur-sm rounded-full shadow-sm px-6 py-2">
-          <ul className="flex space-x-8 text-dark font-hanken text-[14px] font-medium">
-            {["Home", "About", "Works", "Services", "Contact"].map((item) => (
-              <li key={item} className="group relative cursor-pointer">
+        {/* Right - Nav Links */}
+        <ul className="hidden md:flex space-x-6 text-[#0A0F0D] font-hanken text-[15px] font-medium items-center bg-[#CDDF3D] backdrop-blur-sm px-6 py-2 rounded-full shadow-sm">
+          {["Home", "About", "Works", "Services", "Contact"].map((item) => {
+            const id = item.toLowerCase();
+            const isActive = activeSection === id;
+            return (
+              <li key={item}>
                 <a
-                  href={`#${item.toLowerCase()}`}
-                  className="transition-colors duration-300 group-hover:text-indigoMain"
-                >
-                  {item}
-                </a>
-                <span className="absolute left-0 -bottom-1 w-0 h-[1.5px] bg-indigoMain transition-all duration-300 group-hover:w-full"></span>
-              </li>
-            ))}
-          </ul>
-        </div>
+  href={`#${id}`}
+  onClick={(e) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      window.scrollTo({
+        top: el.offsetTop - 60, // adjust for navbar height
+        behavior: "smooth",
+      });
+    }
+  }}
+  className={`relative transition-all duration-200 px-3 py-1 rounded-full ${
+    isActive
+      ? "bg-[#FDF9F5] text-[#0A0F0D] font-semibold"
+      : "text-[#0A0F0D] hover:text-[#5862E9]"
+  }`}
+>
+  {item}
+</a>
 
-        {/* MOBILE MENU ICON */}
-        <div className="md:hidden flex flex-col justify-center items-end space-y-[5px] cursor-pointer">
-          <span className="w-6 h-[2px] bg-dark"></span>
-          <span className="w-4 h-[2px] bg-dark"></span>
-        </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
