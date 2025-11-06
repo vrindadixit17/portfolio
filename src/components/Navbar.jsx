@@ -1,46 +1,105 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react"; // simple icons
+import { useEffect, useRef, useState } from "react";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "work", label: "Work" },
+  { id: "contact", label: "Contact" },
+];
+
+export default function Navbar() {
+  const containerRef = useRef(null);
+  const itemRefs = useRef([]);
+  const indicatorRef = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoverIndex, setHoverIndex] = useState(null);
+
+  const getBoxForIndex = (index) => {
+    const container = containerRef.current;
+    const el = itemRefs.current[index];
+    if (!container || !el) return null;
+    const cRect = container.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    return { left: r.left - cRect.left, width: r.width };
+  };
+
+  const moveIndicator = (toIndex) => {
+    const box = getBoxForIndex(toIndex);
+    const ind = indicatorRef.current;
+    if (!box || !ind) return;
+    ind.style.width = `${box.width}px`;
+    ind.style.transform = `translateX(${box.left}px)`;
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      moveIndicator(hoverIndex ?? activeIndex);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [activeIndex, hoverIndex]);
+
+  useEffect(() => {
+    if (hoverIndex !== null) moveIndicator(hoverIndex);
+    else moveIndicator(activeIndex);
+  }, [activeIndex, hoverIndex]);
 
   return (
-    <nav className="fixed w-full bg-white shadow-md z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-600">Vrinda Dixit</h1>
+    <header className="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-center justify-between h-16 relative">
+          {/* logo/name */}
+          <div className="text-xl font-semibold text-emerald-600">Vrinda</div>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-8 text-gray-800 font-medium">
-          <li><a href="#hero" className="hover:text-blue-500">Home</a></li>
-          <li><a href="#about" className="hover:text-blue-500">About</a></li>
-          <li><a href="#projects" className="hover:text-blue-500">Projects</a></li>
-          <li><a href="#contact" className="hover:text-blue-500">Contact</a></li>
-        </ul>
+          {/* navigation */}
+          <nav ref={containerRef} className="relative">
+            {/* sliding indicator */}
+            <div
+              ref={indicatorRef}
+              className="pointer-events-none absolute -bottom-1 h-[3px] bg-emerald-500 rounded-full transition-all duration-300 ease-out"
+              style={{ width: 0, transform: "translateX(0px)" }}
+            />
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-gray-800 focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+            <ul className="flex gap-6 px-4 py-2">
+              {navItems.map((item, i) => (
+                <li
+                  key={item.id}
+                  ref={(el) => (itemRefs.current[i] = el)}
+                  className="relative"
+                >
+                  <button
+                    onClick={() => setActiveIndex(i)}
+                    onMouseEnter={() => setHoverIndex(i)}
+                    onMouseLeave={() => setHoverIndex(null)}
+                    onFocus={() => setHoverIndex(i)}
+                    onBlur={() => setHoverIndex(null)}
+                    className={`px-2 py-1 text-sm font-medium transition-colors duration-150 focus:outline-none ${
+                      i === activeIndex
+                        ? "text-emerald-700"
+                        : "text-gray-700 hover:text-emerald-600"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-      {/* Mobile Sliding Menu */}
-      <div
-        className={`md:hidden fixed top-0 right-0 h-full w-2/3 bg-white shadow-lg transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
-      >
-        <div className="flex flex-col items-center mt-20 space-y-8 text-lg">
-          <a href="#hero" onClick={() => setIsOpen(false)} className="hover:text-blue-500">Home</a>
-          <a href="#about" onClick={() => setIsOpen(false)} className="hover:text-blue-500">About</a>
-          <a href="#projects" onClick={() => setIsOpen(false)} className="hover:text-blue-500">Projects</a>
-          <a href="#contact" onClick={() => setIsOpen(false)} className="hover:text-blue-500">Contact</a>
+          {/* optional contact button */}
+          <div className="hidden md:block">
+            <a
+              href="#contact"
+              className="ml-4 px-4 py-1.5 rounded-md bg-emerald-600 text-white text-sm font-medium shadow-sm hover:bg-emerald-700 transition"
+            >
+              Contact
+            </a>
+          </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}
