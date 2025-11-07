@@ -9,13 +9,13 @@ const Hero = () => {
         <div className="text-center mt-20">
             <h1 className="inline-flex items-end justify-center">
             {/* P O R T */}
-            <span className="text-[#222222] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none -mr-[18px]">P</span>
-            <span className="text-[#222222] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none -mr-[18px]">O</span>
-            <span className="text-[#222222] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none -mr-[18px]">R</span>
-            <span className="text-[#222222] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none">T</span>
+            <span className="text-[#FF7EDF] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none -mr-[18px]">P</span>
+            <span className="text-[#FF7EDF] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none -mr-[18px]">O</span>
+            <span className="text-[#FF7EDF] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none -mr-[18px]">R</span>
+            <span className="text-[#FF7EDF] font-[Tahoma] font-extrabold text-[90px] md:text-[130px] leading-none">T</span>
 
             {/* folio */}
-            <span className="font-[Italianno] text-[#222222] text-[100px] md:text-[150px] font-normal leading-none ml-2 relative top-[28px] left-[-30px] ">
+            <span className="font-[Italianno] text-[#FF7EDF] text-[100px] md:text-[150px] font-normal leading-none ml-2 relative top-[28px] left-[-30px] ">
             folio
             </span>
             </h1>
