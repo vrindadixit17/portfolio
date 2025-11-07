@@ -41,7 +41,7 @@ const Navbar = () => {
         </div>
 
         {/* Right - Nav Links */}
-        <ul className="hidden md:flex space-x-6 text-[#0A0F0D] font-hanken text-[15px] font-medium items-center bg-[#CDDF3D] backdrop-blur-sm px-6 py-2 rounded-full shadow-sm">
+        <ul className="hidden md:flex space-x-6 text-[#222222] font-hanken text-[15px] font-medium items-center bg-[#CDDF3D] backdrop-blur-sm px-6 py-2 rounded-full shadow-sm">
           {["Home", "About", "Works", "Services", "Contact"].map((item) => {
             const id = item.toLowerCase();
             const isActive = activeSection === id;
@@ -61,8 +61,8 @@ const Navbar = () => {
   }}
   className={`relative transition-all duration-200 px-3 py-1 rounded-full ${
     isActive
-      ? "bg-[#F6F4F0] text-[#0A0F0D] font-semibold"
-      : "text-[#0A0F0D] hover:text-[#5862E9]"
+      ? "bg-[#F6F4F0] text-[#222222] font-semibold"
+      : "text-[#222222] hover:text-[#5862E9]"
   }`}
 >
   {item}
