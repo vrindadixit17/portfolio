@@ -27,7 +27,7 @@ const Hero = () => {
       <div className="flex flex-col md:flex-row items-center justify-center mt-10 gap-8 md:gap-16">
         {/* Left text */}
         <p className="max-w-xs text-[#5862E9] text-center md:text-right text-sm md:text-base font-[Hanken_Grotesk] leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel arcu non enim tincidunt aliquam.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
 
         {/* Folder image */}
