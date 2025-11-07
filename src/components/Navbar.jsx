@@ -61,7 +61,7 @@ const Navbar = () => {
   }}
   className={`relative transition-all duration-200 px-3 py-1 rounded-full ${
     isActive
-      ? "bg-[#F6F4F0] text-[#222222] font-semibold"
+      ? "bg-[#FDF9F5] text-[#222222] font-semibold"
       : "text-[#222222] hover:text-[#5862E9]"
   }`}
 >

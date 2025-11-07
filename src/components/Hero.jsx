@@ -3,7 +3,7 @@ import folder from "../assets/folder.png";
 
 const Hero = () => {
   return (
-    <section className="flex flex-col items-center text-center min-h-screen bg-[#F6F4F0] px-6 pt-0 -mt-8 relative">
+    <section className="flex flex-col items-center text-center min-h-screen bg-[#FDF9F5] px-6 pt-0 -mt-8 relative">
 
         {/* Portfolio Title Image */}
         <div className="text-center mt-20">
