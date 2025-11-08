@@ -3,6 +3,21 @@ import aboutImg from "../assets/about.png"; // main large image
 import me from "../assets/me.png"; // smaller overlay image
 
 const About = () => {
+  const skills = [
+    "UI/UX Design",
+    "React",
+    "JavaScript",
+    "Python",
+    "Tailwind CSS",
+    "Figma",
+    "Data Structures",
+    "Node.js",
+    "SQL",
+    "Leadership",
+    "Communication",
+    "Public Speaking",
+  ];
+
   return (
     <section id="about" className="w-full flex flex-col">
       {/* ✅ TOP OMBRE (White → Pink) */}
@@ -36,8 +51,6 @@ const About = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 max-w-6xl w-full">
           {/* ✅ IMAGE CONTAINER — with overlay */}
           <div className="relative w-[280px] md:w-[380px] rotate-[4deg] -mt-20">
-            
-
             {/* Main Image */}
             <img
               src={aboutImg}
@@ -50,7 +63,7 @@ const About = () => {
               <img
                 src={me}
                 alt="Me"
-                className="w-full h-auto object-cover rounded-xl "
+                className="w-full h-auto object-cover rounded-xl"
               />
             </div>
           </div>
@@ -65,6 +78,20 @@ const About = () => {
             occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
             mollit anim id est laborum.
           </p>
+        </div>
+
+        {/* ✅ SKILLS SLIDER SECTION */}
+        <div className="w-full overflow-hidden mt-14 relative">
+          <div className="flex whitespace-nowrap animate-marquee">
+            {skills.concat(skills).map((skill, index) => (
+              <div
+                key={index}
+                className="mx-1 bg-[#FDF9F5] text-[#5862E9] font-[Hanken_Grotesk] text-sm md:text-base font-medium px-6 py-1 rounded-full shadow-md border border-[#5862E9] min-w-fit"
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
