@@ -19,14 +19,15 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="w-full flex flex-col">
+    <section id="about" className="w-full flex flex-col relative overflow-hidden">
       {/* ✅ TOP OMBRE (White → Pink) */}
-      <div className="w-full h-[120px] bg-gradient-to-b from-[#FDF9F5] to-[#FF7EDF]"></div>
+      <div className="w-full h-[120px] bg-gradient-to-b from-[#FDF9F5] to-[#FF7EDF]" />
 
-      {/* ✅ MIDDLE SOLID PINK BLOCK */}
-      <div className="w-full bg-[#FF7EDF] px-1 pt-2 pb-2 flex flex-col items-center">
+      {/* ✅ MIDDLE PINK SECTION */}
+      <div className="relative w-full bg-[#FF7EDF] px-1 pt-2 pb-2 flex flex-col items-center">
+
         {/* ✅ ABOUT ME Title */}
-        <div className="relative text-center z-20 translate-x-16 md:translate-x-20 -translate-y-6 md:-translate-y-8">
+        <div className="relative text-center z-30 translate-x-16 md:translate-x-20 -translate-y-6 md:-translate-y-8">
           <h1 className="inline-flex text-[#5862E9] font-[Hanken_Grotesk] font-extrabold leading-none text-[70px] md:text-[95px]">
             <span className="font-[Tahoma] text-[90px] md:text-[100px] -mr-[16px]">A</span>
             <span className="font-[Tahoma] text-[90px] md:text-[100px] -mr-[16px]">B</span>
@@ -47,10 +48,25 @@ const About = () => {
           </span>
         </div>
 
+        {/* ✅ SKILLS SLIDER - Positioned just below title & behind images */}
+        
+        <div className="absolute top-[35%] left-0 w-full overflow-hidden z-10 opacity-70">
+          <div className="flex whitespace-nowrap animate-marquee">
+            {skills.concat(skills).map((skill, index) => (
+              <div
+                key={index}
+                className="mx-1 bg-[#FDF9F5] text-[#5862E9] font-[Hanken_Grotesk] text-xs md:text-sm font-semibold px-6 py-1.5 rounded-full shadow-sm border border-[#5862E9]/60 min-w-fit tracking-wide"
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ✅ MAIN LAYOUT (Image + Text) */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 max-w-6xl w-full">
+        <div className="relative flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 max-w-6xl w-full z-20 mt-12">
           {/* ✅ IMAGE CONTAINER — with overlay */}
-          <div className="relative w-[280px] md:w-[380px] rotate-[4deg] -mt-20">
+          <div className="relative w-[280px] md:w-[380px] rotate-[4deg] -mt-20 z-30">
             {/* Main Image */}
             <img
               src={aboutImg}
@@ -69,34 +85,18 @@ const About = () => {
           </div>
 
           {/* Right text */}
-          <p className="max-w-md text-[#222222] text-center md:text-left font-[Hanken_Grotesk] leading-relaxed text-[15px]">
+          <p className="max-w-md text-[#222222] text-center md:text-left font-[Hanken_Grotesk] leading-relaxed text-[15px] z-30">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
             commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-            occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-            mollit anim id est laborum.
+            velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
-        </div>
-
-        {/* ✅ SKILLS SLIDER SECTION */}
-        <div className="w-full overflow-hidden mt-14 relative">
-          <div className="flex whitespace-nowrap animate-marquee">
-            {skills.concat(skills).map((skill, index) => (
-              <div
-                key={index}
-                className="mx-1 bg-[#FDF9F5] text-[#5862E9] font-[Hanken_Grotesk] text-sm md:text-base font-medium px-6 py-1 rounded-full shadow-md border border-[#5862E9] min-w-fit"
-              >
-                {skill}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
       {/* ✅ BOTTOM OMBRE (Pink → White) */}
-      <div className="w-full h-[200px] bg-gradient-to-b from-[#FF7EDF] to-[#FDF9F5]"></div>
+      <div className="w-full h-[200px] bg-gradient-to-b from-[#FF7EDF] to-[#FDF9F5]" />
     </section>
   );
 };
