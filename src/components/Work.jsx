@@ -2,7 +2,7 @@ import React from "react";
 
 const Work = () => {
   return (
-    <section className="work" data-aos="fade-up">
+    <section>
       <h2 className="script-title">my work</h2>
       <div className="work-cards">
         <div className="card" data-aos="zoom-in">
