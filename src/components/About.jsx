@@ -49,7 +49,6 @@ const About = () => {
         </div>
 
         {/* ✅ SKILLS SLIDER - Positioned just below title & behind images */}
-        
         <div className="absolute top-[35%] left-0 w-full overflow-hidden z-10 opacity-70">
           <div className="flex whitespace-nowrap animate-marquee">
             {skills.concat(skills).map((skill, index) => (
@@ -64,7 +63,7 @@ const About = () => {
         </div>
 
         {/* ✅ MAIN LAYOUT (Image + Text) */}
-        <div className="relative flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 max-w-6xl w-full z-20 mt-12">
+        <div className="relative flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 max-w-6xl w-full z-20 mt-15">
           {/* ✅ IMAGE CONTAINER — with overlay */}
           <div className="relative w-[280px] md:w-[380px] rotate-[4deg] -mt-20 z-30">
             {/* Main Image */}
