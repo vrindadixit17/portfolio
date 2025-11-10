@@ -32,42 +32,43 @@ const Navbar = () => {
 
   return (
     <nav
-      className = "fixed top-5 left-0 w-full z-50 transition-all duration-500"
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+        scrolled ? "scale-95 shadow-md" : "scale-100"
+      }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-50">
-        {/* Left - Logo */}
-        <div className="text-2xl font-italianno text-[#CDDF3D] text-[40px] tracking-wide">
+      <div className="flex items-center justify-center bg-[#CDDF3D] rounded-full shadow-md px-8 py-2 gap-10 font-[Hanken_Grotesk] text-[#0A0F0D]">
+        {/* vrinda logo */}
+        <div className="text-[32px] font-[Italianno] text-[#CDDF3D] bg-[#5862E9] px-3 py-0.5 rounded-md shadow-sm">
           vrinda
         </div>
 
-        {/* Right - Nav Links */}
-        <ul className="hidden md:flex space-x-6 text-[#222222] font-hanken text-[15px] font-medium items-center bg-[#CDDF3D] backdrop-blur-sm px-6 py-2 rounded-full shadow-sm">
+        {/* nav links */}
+        <ul className="flex space-x-6 text-[15px] font-medium items-center">
           {["Home", "About", "Works", "Services", "Contact"].map((item) => {
             const id = item.toLowerCase();
             const isActive = activeSection === id;
             return (
               <li key={item}>
                 <a
-  href={`#${id}`}
-  onClick={(e) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      window.scrollTo({
-        top: el.offsetTop - 60, // adjust for navbar height
-        behavior: "smooth",
-      });
-    }
-  }}
-  className={`relative transition-all duration-200 px-3 py-1 rounded-full ${
-    isActive
-      ? "bg-[#FDF9F5] text-[#222222] font-semibold"
-      : "text-[#222222] hover:text-[#5862E9]"
-  }`}
->
-  {item}
-</a>
-
+                  href={`#${id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(id);
+                    if (el) {
+                      window.scrollTo({
+                        top: el.offsetTop - 60, // adjust for navbar height
+                        behavior: "smooth",
+                      });
+                    }
+                  }}
+                  className={`relative transition-all duration-300 px-4 py-1 rounded-full ${
+                    isActive
+                      ? "bg-[#FDF9F5] text-[#0A0F0D] font-semibold"
+                      : "text-[#0A0F0D] hover:text-[#5862E9]"
+                  }`}
+                >
+                  {item}
+                </a>
               </li>
             );
           })}
