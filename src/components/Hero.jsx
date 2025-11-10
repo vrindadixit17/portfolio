@@ -3,9 +3,10 @@ import folder from "../assets/folder.png";
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-col items-center text-center min-h-screen bg-[#FDF9F5] px-6 pt-8 overflow-hidden">
+    <section className="relative flex flex-col items-center text-center min-h-screen bg-[#FDF9F5] px-6 pt-1 overflow-hidden">
       {/* ---------------- LEFT SIDEBAR ---------------- */}
-      <aside className="hidden md:flex flex-col justify-between fixed top-4 left-4 w-[260px] h-[95vh] bg-[#94A7FF] text-[#0A0F0D] rounded-xl shadow-md p-5">
+      <aside className="hidden md:flex flex-col justify-between absolute top-4 left-4 w-[260px] h-[85%] bg-[#94A7FF] text-[#0A0F0D] rounded-xl shadow-md p-5">
+
         <div>
           <p className="text-lg font-[Hanken_Grotesk] mt-2">Portfolio</p>
           <hr className="border-t border-[#0A0F0D] my-4" />
@@ -26,7 +27,8 @@ const Hero = () => {
       </aside>
 
       {/* ---------------- RIGHT SIDEBAR ---------------- */}
-      <aside className="hidden md:flex flex-col justify-between fixed top-4 right-4 w-[260px] h-[95vh] bg-[#94A7FF] text-[#0A0F0D] rounded-xl shadow-md p-5">
+      <aside className="hidden md:flex flex-col justify-between absolute top-4 right-4 w-[260px] h-[85%] bg-[#94A7FF] text-[#0A0F0D] rounded-xl shadow-md p-5">
+
         <div>
           <h3 className="font-[Hanken_Grotesk] text-base">Project Stats</h3>
           <hr className="border-t border-[#0A0F0D] my-2" />

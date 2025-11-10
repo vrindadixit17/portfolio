@@ -8,24 +8,31 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // detect active section
       const sections = ["home", "about", "works", "services", "contact"];
       const scrollMid = window.scrollY + window.innerHeight / 2;
 
+      let found = false;
       for (let sec of sections) {
         const el = document.getElementById(sec);
         if (!el) continue;
         const top = el.offsetTop;
         const height = el.offsetHeight;
+
         if (scrollMid >= top && scrollMid < top + height) {
           setActiveSection(sec);
+          found = true;
           break;
         }
+      }
+
+      // ✅ ensure Home is active when at top of page
+      if (!found && window.scrollY < 200) {
+        setActiveSection("home");
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // initial check
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -35,9 +42,9 @@ const Navbar = () => {
         scrolled ? "scale-95 shadow-md" : "scale-100"
       }`}
     >
-      <div className="flex items-center justify-between bg-[#CDDF3D] backdrop-blur-sm px-8 py-2 rounded-full shadow-sm font-[Hanken_Grotesk] text-[#222222] text-[15px] font-medium">
+      <div className="flex items-center bg-[#CDDF3D] backdrop-blur-sm px-8 py-2 rounded-full shadow-sm font-[Hanken_Grotesk] text-[#222222] text-[15px] font-medium">
         {/* vrinda logo */}
-        <div className="text-[34px] font-[Italianno] text-[#5862E9] mr-6 tracking-wide leading-none">
+        <div className="text-[34px] font-[Italianno] text-[#5862E9] mr-6 leading-none">
           vrinda
         </div>
 
@@ -55,7 +62,7 @@ const Navbar = () => {
                     const el = document.getElementById(id);
                     if (el) {
                       window.scrollTo({
-                        top: el.offsetTop - 60,
+                        top: el.offsetTop - 80,
                         behavior: "smooth",
                       });
                     }
