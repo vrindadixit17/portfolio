@@ -21,10 +21,10 @@ const About = () => {
   return (
     <section id="about" className="w-full flex flex-col relative overflow-hidden">
       {/* ✅ TOP OMBRE (White → Pink) */}
-      <div className="w-full h-[120px] bg-gradient-to-b from-[#FDF9F5] to-[#FF7EDF]" />
+      <div className="w-full h-[120px] bg-gradient-to-b from-[#FDF9F5] to-[#FEA3E6]" />
 
       {/* ✅ MIDDLE PINK SECTION */}
-      <div className="relative w-full bg-[#FF7EDF] px-1 pt-2 pb-2 flex flex-col items-center">
+      <div className="relative w-full bg-[#FEA3E6] px-1 pt-2 pb-2 flex flex-col items-center">
 
         {/* ✅ ABOUT ME Title */}
         <div className="relative text-center z-30 translate-x-16 md:translate-x-20 -translate-y-6 md:-translate-y-8">
@@ -95,7 +95,7 @@ const About = () => {
       </div>
 
       {/* ✅ BOTTOM OMBRE (Pink → White) */}
-      <div className="w-full h-[200px] bg-gradient-to-b from-[#FF7EDF] to-[#FDF9F5]" />
+      <div className="w-full h-[200px] bg-gradient-to-b from-[#FEA3E6] to-[#FDF9F5]" />
     </section>
   );
 };
