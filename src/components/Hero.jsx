@@ -59,33 +59,7 @@ const Hero = () => {
         </button>
       </aside>
 
-      {/* ---------------- CENTER NAVBAR ---------------- */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-[#CDDF3D] text-[#0A0F0D] font-[Hanken_Grotesk] rounded-full shadow-md px-8 py-2 flex items-center justify-center gap-6">
-        <a
-          href="#home"
-          className="px-3 py-1 rounded-full bg-[#FDF9F5] text-[#0A0F0D] font-medium text-sm hover:scale-105 transition-all"
-        >
-          HOME
-        </a>
-        <a
-          href="#about"
-          className="px-3 py-1 rounded-full text-sm hover:bg-[#FDF9F5] hover:text-[#0A0F0D] transition-all"
-        >
-          ABOUT
-        </a>
-        <a
-          href="#works"
-          className="px-3 py-1 rounded-full text-sm hover:bg-[#FDF9F5] hover:text-[#0A0F0D] transition-all"
-        >
-          WORKS
-        </a>
-        <a
-          href="#services"
-          className="px-3 py-1 rounded-full text-sm hover:bg-[#FDF9F5] hover:text-[#0A0F0D] transition-all"
-        >
-          SERVICES
-        </a>
-      </nav>
+      
 
       {/* ---------------- PORTfolio TITLE ---------------- */}
       <div className="text-center mt-24 z-10">
