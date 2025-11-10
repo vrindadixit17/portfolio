@@ -48,7 +48,7 @@ const Hero = () => {
         <button className=" bg-[#B494F9] text-[#0A0F0D] px-6 py-1.5 rounded-full font-[Hanken Grotesk] text-sm md:text-base hover:bg-[#B494F9] transition-all duration-500 shadow-md">
           Available for new opportunities
         </button>
-        <button className="border-2 border-[#B494F9] text-[#0A0F0D] px-6 py-1.5 rounded-full font-[Hanken Grotesk] text-sm md:text-base hover:bg-[#5862E9] hover:text-[#0A0F0D] transition-all duration-300 shadow-md">
+        <button className="border-2 border-[#B494F9] text-[#0A0F0D] px-6 py-1.5 rounded-full font-[Hanken Grotesk] text-sm md:text-base hover:bg-[#B494F9] hover:text-[#0A0F0D] transition-all duration-300 shadow-md">
           Contact
         </button>
       </div>
