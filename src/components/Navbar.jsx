@@ -6,7 +6,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // shrink navbar when scrolling
       setScrolled(window.scrollY > 20);
 
       // detect active section
@@ -32,18 +31,18 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+      className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
         scrolled ? "scale-95 shadow-md" : "scale-100"
       }`}
     >
-      <div className="flex items-center justify-center bg-[#CDDF3D] rounded-full shadow-md px-8 py-2 gap-10 font-[Hanken_Grotesk] text-[#0A0F0D]">
+      <div className="flex items-center justify-between bg-[#CDDF3D] backdrop-blur-sm px-8 py-2 rounded-full shadow-sm font-[Hanken_Grotesk] text-[#222222] text-[15px] font-medium">
         {/* vrinda logo */}
-        <div className="text-[32px] font-[Italianno] text-[#CDDF3D] bg-[#5862E9] px-3 py-0.5 rounded-md shadow-sm">
+        <div className="text-[34px] font-[Italianno] text-[#5862E9] mr-6 tracking-wide leading-none">
           vrinda
         </div>
 
         {/* nav links */}
-        <ul className="flex space-x-6 text-[15px] font-medium items-center">
+        <ul className="flex space-x-6 items-center">
           {["Home", "About", "Works", "Services", "Contact"].map((item) => {
             const id = item.toLowerCase();
             const isActive = activeSection === id;
@@ -56,15 +55,15 @@ const Navbar = () => {
                     const el = document.getElementById(id);
                     if (el) {
                       window.scrollTo({
-                        top: el.offsetTop - 60, // adjust for navbar height
+                        top: el.offsetTop - 60,
                         behavior: "smooth",
                       });
                     }
                   }}
-                  className={`relative transition-all duration-300 px-4 py-1 rounded-full ${
+                  className={`transition-all duration-300 px-3 py-1 rounded-full ${
                     isActive
-                      ? "bg-[#FDF9F5] text-[#0A0F0D] font-semibold"
-                      : "text-[#0A0F0D] hover:text-[#5862E9]"
+                      ? "bg-[#FDF9F5] text-[#222222] font-semibold"
+                      : "text-[#222222] hover:text-[#5862E9]"
                   }`}
                 >
                   {item}
