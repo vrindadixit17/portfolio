@@ -2,11 +2,11 @@ import React from "react";
 
 const Works = () => {
   const projects = [
-    { title: "Google Developers Group", color: "#FF7EDF", rotate: "-6deg" },
-    { title: "Google Developers Group", color: "#ED6951", rotate: "-3deg" },
-    { title: "Google Developers Group", color: "#B494F9", rotate: "0deg" },
-    { title: "Google Developers Group", color: "#CDDF3D", rotate: "3deg" },
-    { title: "Google Developers Group", color: "#5862E9", rotate: "6deg" },
+    { title: "Google Developers Group", color: "#FF7EDF", rotate: "-8deg", z: 10 },
+    { title: "Google Developers Group", color: "#ED6951", rotate: "-4deg", z: 20 },
+    { title: "Google Developers Group", color: "#B494F9", rotate: "0deg", z: 30 },
+    { title: "Google Developers Group", color: "#CDDF3D", rotate: "4deg", z: 20 },
+    { title: "Google Developers Group", color: "#5862E9", rotate: "8deg", z: 10 },
   ];
 
   return (
@@ -40,7 +40,7 @@ const Works = () => {
       <div className="w-[90%] border-t-[1.5px] border-[#222222] mt-4 mb-12"></div>
 
       {/* ===== PROJECT CARDS ===== */}
-      <div className="flex flex-wrap justify-center items-end gap-6 md:gap-8 mt-10">
+      <div className="flex justify-center items-end mt-16 -space-x-16 md:-space-x-24">
         {projects.map((p, index) => (
           <div
             key={index}
@@ -48,6 +48,7 @@ const Works = () => {
             style={{
               backgroundColor: p.color,
               transform: `rotate(${p.rotate})`,
+              zIndex: p.z,
             }}
           >
             <h2 className="text-[#0A0F0D] font-[Hanken_Grotesk] text-[15px] font-bold leading-snug">
