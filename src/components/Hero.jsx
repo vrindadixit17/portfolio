@@ -89,34 +89,16 @@ const Hero = () => {
 
       {/* ---------------- FOLDER + SIDE TEXT ---------------- */}
       <div className="flex flex-col md:flex-row items-center justify-center mt-8 md:mt-10 gap-8 md:gap-20 px-4 md:px-10 z-10">
-        {/* Left Text */}
-        <p className="max-w-xs text-[#5862E9] text-center md:text-right text-[13px] md:text-[15px] font-[Hanken_Grotesk] leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-
+       
         {/* Folder Image */}
         <img
           src={folder}
           alt="Folder"
           className="w-[250px] md:w-[350px] h-auto object-contain drop-shadow-md"
         />
-
-        {/* Right Text */}
-        <p className="max-w-xs text-[#5862E9] text-center md:text-left text-[13px] md:text-[15px] font-[Hanken_Grotesk] leading-relaxed">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+ 
       </div>
 
-      {/* ---------------- BUTTONS ---------------- */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10 z-10">
-        <button className="bg-[#5862E9] text-[#FDF9F5] px-8 py-2 rounded-full font-[Hanken_Grotesk] text-sm md:text-base shadow-md hover:scale-105 transition-all duration-300">
-          Available for new opportunities
-        </button>
-
-        <button className="bg-[#5862E9] text-[#FDF9F5] px-8 py-2 rounded-full font-[Hanken_Grotesk] text-sm md:text-base shadow-md hover:scale-105 transition-all duration-300">
-          Contact me
-        </button>
-      </div>
     </section>
   );
 };
