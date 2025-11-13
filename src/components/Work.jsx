@@ -9,6 +9,7 @@ const Works = () => {
     { title: "Google Developers Group", color: "#5862E9", rotate: "8deg", z: 10 },
   ];
 
+  
   return (
     <section
       id="works"
