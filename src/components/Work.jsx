@@ -1,92 +1,90 @@
 import React from "react";
-import img1 from "../assets/work1.png";
-import img2 from "../assets/work2.png";
-import img3 from "../assets/work3.png";
-import img4 from "../assets/work4.png";
+import proj3 from "../assets/proj3.jpg"; // image for panel 3 (replace with yours!)
 
 const Works = () => {
-  const projects = [
-    {
-      id: 1,
-      subtitle: "LABORATORY",
-      details: "Discovery Industry Solutions",
-      image: img1,
-    },
-    {
-      id: 2,
-      subtitle: "ENGINEERING",
-      details: "Chemical • Synthetic Fibers • Metal",
-      image: img2,
-    },
-    {
-      id: 3,
-      subtitle: "LAB PRODUCTION",
-      details: "Racks • Exhibition Systems",
-      image: img3,
-    },
-    {
-      id: 4,
-      subtitle: "PROJECTS 3D",
-      details: "Analysis • Product Sketch",
-      image: img4,
-    },
-  ];
-
   return (
     <section
       id="works"
-      className="min-h-screen bg-[#FDF9F5] flex flex-col items-center justify-center py-12 px-4 overflow-hidden"
+      className="w-full min-h-screen bg-[#FDF9F5] pt-10 pb-20"
     >
-      {/* TITLE */}
-      <div className="text-center mb-8">
-        <h1 className="text-[80px] md:text-[110px] font-[Tahoma] font-extrabold text-[#B494F9] leading-none">
-          WORKS
+      {/* WORKS TITLE */}
+      <div className="text-left pl-10 mb-10">
+        <h1 className="inline-flex items-end space-x-2">
+          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
+            W
+          </span>
+          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
+            O
+          </span>
+          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
+            R
+          </span>
+          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
+            K
+          </span>
+          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
+            S
+          </span>
+
+          <span className="font-[Italianno] text-[45px] md:text-[60px] text-[#B494F9] ml-4">
+            works
+          </span>
+          <span className="font-[Italianno] text-[35px] md:text-[50px] text-[#B494F9] ml-4">
+            give your ideas a glow up, take a look at some of my projects
+          </span>
         </h1>
-        <p className="font-[Italianno] text-[#5862E9] text-[28px] md:text-[36px] -mt-3">
-          give your ideas a glow up, take a look at some of my projects
-        </p>
       </div>
 
-      {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-4 w-full max-w-7xl border-t border-[#0A0F0D] border-b">
+      {/* LINE UNDER TITLE */}
+      <div className="w-full border-t border-[#222222] opacity-40"></div>
 
-        {projects.map((p) => (
-          <div
-            key={p.id}
-            className="
-              relative h-[520px] 
-              border-r border-[#0A0F0D] 
-              group overflow-hidden cursor-pointer
-            "
-          >
-            {/* DEFAULT WHITE PANEL */}
-            <div className="absolute inset-0 bg-white z-10 group-hover:opacity-0 transition-opacity duration-500 flex flex-col justify-between p-8">
+      {/* PANELS */}
+      <div className="grid grid-cols-1 md:grid-cols-4 mt-10 h-[70vh]">
+        {/* PANEL 1 */}
+        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
+          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+            1
+          </span>
 
-              {/* LARGE NUMBER */}
-              <h2 className="text-[150px] md:text-[190px] font-[Hanken_Grotesk] font-extrabold text-[#5862E9]">
-                {p.id}
-              </h2>
-
-              {/* TEXT SECTION */}
-              <div>
-                <p className="text-[13px] tracking-widest border border-[#0A0F0D] rounded-full px-3 py-1 inline-block mb-3">
-                  {p.subtitle}
-                </p>
-                <p className="font-[Hanken_Grotesk] text-[16px] leading-snug text-[#0A0F0D]">
-                  {p.details}
-                </p>
-              </div>
-            </div>
-
-            {/* PROJECT IMAGE (HIDDEN UNTIL HOVER) */}
-            <img
-              src={p.image}
-              alt="work"
-              className="absolute inset-0 w-full h-full object-cover scale-105 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700"
-            />
+          {/* Hover content */}
+          <div className="absolute inset-0 bg-[#1A1A1A] text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+            <p className="text-xl font-semibold">Project Coming Soon</p>
           </div>
-        ))}
+        </div>
 
+        {/* PANEL 2 */}
+        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
+          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+            2
+          </span>
+          <div className="absolute inset-0 bg-[#1A1A1A] text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+            <p className="text-xl font-semibold">Project Coming Soon</p>
+          </div>
+        </div>
+
+        {/* PANEL 3 — IMAGE SHOWS ON HOVER */}
+        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
+          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+            3
+          </span>
+
+          <img
+            src={proj3}
+            alt="Project 3"
+            className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500"
+          />
+        </div>
+
+        {/* PANEL 4 */}
+        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
+          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+            4
+          </span>
+
+          <div className="absolute inset-0 bg-[#1A1A1A] text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+            <p className="text-xl font-semibold">Project Coming Soon</p>
+          </div>
+        </div>
       </div>
     </section>
   );
