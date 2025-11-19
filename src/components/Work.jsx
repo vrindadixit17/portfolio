@@ -1,5 +1,5 @@
 import React from "react";
-import Saree from "../assets/Saree.jpg"; // image for panel 3 (replace with yours!)
+import Saree from "../assets/Saree.png"; // image for panel 3 (replace with yours!)
 
 const Works = () => {
   return (
