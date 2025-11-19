@@ -1,5 +1,5 @@
 import React from "react";
-import proj3 from "../assets/proj3.jpg"; // image for panel 3 (replace with yours!)
+import Saree from "../assets/Saree.jpg"; // image for panel 3 (replace with yours!)
 
 const Works = () => {
   return (
@@ -69,7 +69,7 @@ const Works = () => {
           </span>
 
           <img
-            src={proj3}
+            src={Saree}
             alt="Project 3"
             className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500"
           />
