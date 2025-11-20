@@ -1,59 +1,89 @@
-import React, { useState, useEffect } from "react";
+// src/components/Navbar.jsx
+import React, { useEffect, useState } from "react";
+
+const links = ["Home", "About", "Works", "Services", "Contact"];
 
 const Navbar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [compact, setCompact] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const homeSection = document.getElementById("home");
-      if (!homeSection) return;
-
-      const homeHeight = homeSection.offsetHeight;
-
-      // collapse if scroll goes below home
-      if (window.scrollY > homeHeight - 150) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
-      }
+    const onScroll = () => {
+      // when you scroll past most of the hero, make nav compact
+      const triggerY = window.innerHeight * 0.6;
+      setCompact(window.scrollY > triggerY);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <nav
-      className={`
-        fixed z-50 transition-all duration-700 
-        ${collapsed 
-          ? "top-4 right-6 w-auto" 
-          : "bottom-6 left-1/2 -translate-x-1/2 w-[80%]"
-        }
-      `}
-    >
-      {/* NAV CONTAINER */}
-      <div
-        className={`
-          flex items-center justify-center
-          bg-[#CDDF3D] shadow-lg backdrop-blur-xl
-          transition-all duration-700
-          ${collapsed 
-            ? "px-4 py-2 rounded-full text-sm" 
-            : "px-10 py-3 rounded-full text-lg"
-          }
-        `}
-      >
-        {/* Links */}
-        <div className="flex space-x-6 font-[Hanken_Grotesk] text-[#222]">
+  const handleClick = (id) => (e) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.offsetTop;
+    window.scrollTo({ top: top, behavior: "smooth" });
+  };
 
-          <a href="#home" className="hover:text-[#5862E9] transition">HOME</a>
-          <a href="#about" className="hover:text-[#5862E9] transition">ABOUT</a>
-          <a href="#works" className="hover:text-[#5862E9] transition">WORKS</a>
-          <a href="#services" className="hover:text-[#5862E9] transition">SERVICES</a>
-          <a href="#contact" className="hover:text-[#5862E9] transition">CONTACT</a>
+  // 🔹 BIG NAV (bottom, like your hero pic)
+  if (!compact) {
+    return (
+      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-none">
+        <div className="flex items-center gap-10 md:gap-16 pointer-events-auto">
+          {/* left logo */}
+          <span className="font-[Italianno] text-[36px] md:text-[42px] text-[#FF7EDF]">
+            vrinda
+          </span>
 
+          {/* center links */}
+          <ul className="flex gap-6 md:gap-10 text-[14px] md:text-[16px] font-[Hanken_Grotesk] text-[#0A0F0D]">
+            {links.map((item) => {
+              const id = item.toLowerCase();
+              return (
+                <li key={item}>
+                  <button
+                    onClick={handleClick(id)}
+                    className="uppercase tracking-[0.15em] hover:text-[#5862E9] transition-colors"
+                  >
+                    {item}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* right "portfolio" */}
+          <span className="font-[Italianno] text-[36px] md:text-[42px] text-[#FF7EDF]">
+            portfolio
+          </span>
         </div>
+      </nav>
+    );
+  }
+
+  // 🔹 COMPACT NAV (right side when scrolled)
+  return (
+    <nav className="fixed top-1/2 right-4 -translate-y-1/2 z-40">
+      <div className="flex flex-col items-end gap-3 bg-white/40 backdrop-blur-md rounded-3xl px-3 py-4 shadow-md">
+        <span className="font-[Italianno] text-[24px] text-[#FF7EDF]">
+          vrinda
+        </span>
+        <ul className="flex flex-col gap-2 text-[13px] font-[Hanken_Grotesk] text-[#0A0F0D]">
+          {links.map((item) => {
+            const id = item.toLowerCase();
+            return (
+              <li key={item}>
+                <button
+                  onClick={handleClick(id)}
+                  className="uppercase tracking-[0.15em] hover:text-[#5862E9] transition-colors"
+                >
+                  {item}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
