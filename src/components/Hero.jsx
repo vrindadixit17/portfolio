@@ -1,45 +1,47 @@
 import React from "react";
-// TEMPORARY placeholders — replace with your real images
-import phone1 from "../assets/phone1.png";
-import phone2 from "../assets/phone2.png";
-import phone3 from "../assets/phone3.png";
-import phone4 from "../assets/phone4.png";
-import phone5 from "../assets/phone5.png";
+
+// Import your uploaded phone images
+import phone1 from "/mnt/data/Screenshot 2025-11-20 192853.png";
+import phone2 from "/mnt/data/Screenshot 2025-11-20 192903.png";
+import phone3 from "/mnt/data/Screenshot 2025-11-20 192912.png";
+import phone4 from "/mnt/data/Screenshot 2025-11-20 192918.png";
+import phone5 from "/mnt/data/Screenshot 2025-11-20 192924.png";
 
 const Hero = () => {
   return (
-    <section
-      id="home"
-      className="w-full min-h-screen bg-[#FDF9F5] flex flex-col items-center pt-10 pb-16"
-    >
-      {/* ========== TOP BAR ========== */}
-      <div className="w-full flex justify-between px-12 mb-6">
-        <h1 className="font-[Italianno] text-[48px] text-[#FF7EDF]">
+    <section className="w-full bg-[#FDF9F5] flex flex-col items-center pt-16 pb-10">
+
+      {/* 5 Phones Row */}
+      <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-4">
+        <img src={phone1} alt="phone 1" className="w-[180px] md:w-[220px]" />
+        <img src={phone2} alt="phone 2" className="w-[180px] md:w-[220px]" />
+        <img src={phone3} alt="phone 3" className="w-[180px] md:w-[220px]" />
+        <img src={phone4} alt="phone 4" className="w-[180px] md:w-[220px]" />
+        <img src={phone5} alt="phone 5" className="w-[180px] md:w-[220px]" />
+      </div>
+
+      {/* Bottom Navigation */}
+      <div className="w-full flex justify-between items-center px-10 mt-12">
+        {/* Left Logo */}
+        <div className="text-[45px] font-[Italianno] text-[#CDDF3D]">
           vrinda
-        </h1>
+        </div>
 
-        <h1 className="font-[Italianno] text-[48px] text-[#FF7EDF]">
+        {/* Center Nav */}
+        <ul className="flex gap-10 text-[#222222] font-[Hanken_Grotesk] text-[18px]">
+          <li className="hover:text-[#5862E9] cursor-pointer">HOME</li>
+          <li className="hover:text-[#5862E9] cursor-pointer">ABOUT</li>
+          <li className="hover:text-[#5862E9] cursor-pointer">WORKS</li>
+          <li className="hover:text-[#5862E9] cursor-pointer">SERVICES</li>
+          <li className="hover:text-[#5862E9] cursor-pointer">WORKS</li>
+        </ul>
+
+        {/* Right Logo */}
+        <div className="text-[45px] font-[Italianno] text-[#FF7EDF]">
           portfolio
-        </h1>
+        </div>
       </div>
 
-      {/* ========== PHONE MOCKUP ROW ========== */}
-      <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10">
-        <img src={phone1} className="w-[160px] md:w-[200px]" alt="" />
-        <img src={phone2} className="w-[160px] md:w-[200px]" alt="" />
-        <img src={phone3} className="w-[160px] md:w-[200px]" alt="" />
-        <img src={phone4} className="w-[160px] md:w-[200px]" alt="" />
-        <img src={phone5} className="w-[160px] md:w-[200px]" alt="" />
-      </div>
-
-      {/* ========== NAVIGATION ========== */}
-      <nav className="flex gap-10 md:gap-16 text-[#222] font-[Hanken_Grotesk] text-[18px]">
-        <a href="#home" className="hover:text-[#FF7EDF]">HOME</a>
-        <a href="#about" className="hover:text-[#FF7EDF]">ABOUT</a>
-        <a href="#works" className="hover:text-[#FF7EDF]">WORKS</a>
-        <a href="#services" className="hover:text-[#FF7EDF]">SERVICES</a>
-        <a href="#works" className="hover:text-[#FF7EDF]">WORKS</a>
-      </nav>
     </section>
   );
 };
