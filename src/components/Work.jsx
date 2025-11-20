@@ -39,7 +39,7 @@ const Works = () => {
       <div className="w-full border-t border-[#222222] opacity-40"></div>
 
       {/* PANELS */}
-      <div className="grid grid-cols-1 md:grid-cols-4 mt-10 h-[70vh]">
+      <div className="grid grid-cols-1 md:grid-cols-4 mt-10 h-screen">
         {/* PANEL 1 */}
         <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
           <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
