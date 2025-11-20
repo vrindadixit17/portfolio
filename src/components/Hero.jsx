@@ -9,15 +9,15 @@ import phone5 from "../assets/Screenshot 2025-11-20 192924.png";
 
 const Hero = () => {
   return (
-    <section className="w-full bg-[#FDF9F5] flex flex-col items-center pt-20 pb-10">
-      
-      {/* 5 Phones Row */}
-      <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-        <img src={phone1} alt="phone1" className="w-[180px] md:w-[220px]" />
-        <img src={phone2} alt="phone2" className="w-[180px] md:w-[220px]" />
-        <img src={phone3} alt="phone3" className="w-[180px] md:w-[220px]" />
-        <img src={phone4} alt="phone4" className="w-[180px] md:w-[220px]" />
-        <img src={phone5} alt="phone5" className="w-[180px] md:w-[220px]" />
+    <section className="w-full bg-[#FDF9F5] flex flex-col items-center py-10">
+
+      {/* Row of 5 Phones */}
+      <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-2">
+        <img src={phone1} alt="phone1" className="w-[210px] md:w-[260px]" />
+        <img src={phone2} alt="phone2" className="w-[210px] md:w-[260px]" />
+        <img src={phone3} alt="phone3" className="w-[210px] md:w-[260px]" />
+        <img src={phone4} alt="phone4" className="w-[210px] md:w-[260px]" />
+        <img src={phone5} alt="phone5" className="w-[210px] md:w-[260px]" />
       </div>
 
     </section>
