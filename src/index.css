@@ -2,13 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --heading-font: "Bebas Neue", sans-serif;
+  --body-font: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--body-font);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  @apply bg-gray-50 text-gray-900 font-sans;
-}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
