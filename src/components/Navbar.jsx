@@ -1,85 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Navbar = () => {
-  const [shrink, setShrink] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const aboutSection = document.getElementById("about");
-
-      if (aboutSection) {
-        const triggerPoint = aboutSection.offsetTop - window.innerHeight / 3;
-
-        // 👉 shrink navbar when reaching ABOUT section
-        setShrink(window.scrollY > triggerPoint);
-      }
-
-      // 👉 detect active section
-      const sections = ["home", "about", "works", "services", "contact"];
-      const scrollMid = window.scrollY + window.innerHeight / 2;
-
-      for (let sec of sections) {
-        const el = document.getElementById(sec);
-        if (!el) continue;
-        const top = el.offsetTop;
-        const height = el.offsetHeight;
-        if (scrollMid >= top && scrollMid < top + height) {
-          setActiveSection(sec);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={`fixed z-[200] transition-all duration-700 ease-[cubic-bezier(.25,.1,.25,1)]
-        ${shrink ? "top-6 right-6 left-auto" : "top-8 left-1/2 -translate-x-1/2"}
-      `}
-    >
-      <div
-        className={`flex items-center justify-center bg-[#CDDF3D] text-[#0A0F0D]
-        rounded-full shadow-md transition-all duration-700
-        ${shrink ? "px-6 py-2 scale-75" : "px-10 py-3 scale-100"}
-      `}
-      >
-        <ul className="flex space-x-6 font-[Hanken_Grotesk] text-[14px] font-medium">
-          {["Home", "About", "Works", "Services", "Contact"].map((item) => {
-            const id = item.toLowerCase();
-            const isActive = activeSection === id;
+    <nav className="w-full fixed top-0 left-0 z-50 bg-[#FDF9F5] py-3">
 
-            return (
-              <li key={item}>
-                <a
-                  href={`#${id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById(id);
-                    if (el) {
-                      window.scrollTo({
-                        top: el.offsetTop - 60,
-                        behavior: "smooth",
-                      });
-                    }
-                  }}
-                  className={`px-3 py-1 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "bg-[#FDF9F5] text-[#0A0F0D] font-semibold"
-                      : "text-[#0A0F0D] hover:text-[#5862E9]"
-                  }`}
-                >
-                  {item}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-10">
+
+        {/* Left Logo */}
+        <div className="text-[40px] font-[Italianno] text-[#CDDF3D]">
+          vrinda
+        </div>
+
+        {/* Center Navigation */}
+        <div className="flex space-x-10 text-[#222222] font-[Hanken_Grotesk] text-[18px]">
+          <a href="#home" className="hover:text-[#FF7EDF] transition">HOME</a>
+          <a href="#about" className="hover:text-[#FF7EDF] transition">ABOUT</a>
+          <a href="#works" className="hover:text-[#FF7EDF] transition">WORKS</a>
+          <a href="#services" className="hover:text-[#FF7EDF] transition">SERVICES</a>
+          <a href="#works" className="hover:text-[#FF7EDF] transition">WORKS</a>
+        </div>
+
+        {/* Right Logo */}
+        <div className="text-[40px] font-[Italianno] text-[#FF7EDF]">
+          portfolio
+        </div>
+
       </div>
+
     </nav>
   );
 };
