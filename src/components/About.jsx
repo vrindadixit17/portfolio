@@ -1,55 +1,64 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+// Import your card images
+import c1 from "../assets/c1.png";
+import c2 from "../assets/c2.png";
+import c3 from "../assets/c3.png";
+import c4 from "../assets/c4.png";
+import c5 from "../assets/c5.png";
+import c6 from "../assets/c6.png";
+
+const cards = [c1, c2, c3, c4, c5, c6];
 
 const About = () => {
   return (
     <section
       id="about"
-      className="w-full bg-[#FDF9F5] min-h-screen flex flex-col items-center justify-start pt-20"
+      className="w-full min-h-screen bg-[#FDF9F5] flex flex-col justify-start items-center pt-20"
     >
+      {/* BIG TITLE */}
+      <h1 className="text-[150px] leading-[120px] font-[Tahoma] text-[#5862E9] font-extrabold text-center">
+        VRINDA <br /> DIXIT
+      </h1>
 
-      {/* WRAPPER */}
-      <div className="relative w-full max-w-[1400px] flex justify-center items-center">
+      {/* CENTER FAN ANIMATION */}
+      <div className="relative mt-[-180px] w-[300px] h-[300px] group">
+        {cards.map((c, i) => (
+          <motion.img
+            key={i}
+            src={c}
+            className="absolute left-1/2 top-1/2 w-[180px] h-[240px] object-cover rounded-xl shadow-xl"
+            initial={{
+              x: "-50%",
+              y: "-50%",
+              rotate: 0,
+            }}
+            whileHover={{
+              rotate: (i - 3) * 12,       // spreads left & right
+              x: `${(i - 3) * 22}px`,     // move outward
+              y: `${(Math.abs(i - 3) * -8)}px`,
+              transition: {
+                duration: 0.5,
+                type: "spring",
+              },
+            }}
+            whileTap={{
+              scale: 1.05
+            }}
+          />
+        ))}
+      </div>
 
-        {/* LEFT TEXT */}
-        <div className="w-1/3 text-[13px] text-[#222] leading-relaxed text-right pr-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-          dolor sit amet, consectetur .
-        </div>
+      {/* LEFT + RIGHT LOREM TEXT */}
+      <div className="w-full max-w-7xl mt-10 flex justify-between px-20 text-[#222] text-[14px] leading-relaxed">
+        <p className="max-w-sm">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
 
-        {/* HUGE VRINDA DIXIT BACK TEXT */}
-        <h1 className="absolute text-[250px] font-extrabold text-[#5862E9] opacity-80 leading-[0.8] text-center tracking-tight select-none">
-          VRINDA<br/>DIXIT
-        </h1>
-
-        {/* CENTER STACK (PINK CARD) */}
-        <div className="relative z-10 flex justify-center items-center -mt-10">
-          {/* Multiple rotated layers */}
-          <div className="absolute w-[220px] h-[300px] bg-[#FF7EDF] rotate-[8deg] rounded-xl"></div>
-          <div className="absolute w-[220px] h-[300px] bg-[#CDDF3D] rotate-[2deg] rounded-xl"></div>
-          <div className="absolute w-[220px] h-[300px] bg-[#8F85FF] -rotate-[5deg] rounded-xl"></div>
-
-          {/* Main Pink Card */}
-          <div className="w-[220px] h-[300px] bg-[#FF74D0] rounded-xl shadow-xl rotate-[6deg]"></div>
-        </div>
-
-        {/* RIGHT TEXT */}
-        <div className="w-1/3 text-[13px] text-[#222] leading-relaxed text-left pl-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-          dolor sit amet, consectetur .
-        </div>
-
+        <p className="max-w-sm">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+        </p>
       </div>
     </section>
   );
