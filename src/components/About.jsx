@@ -3,21 +3,24 @@ import React, { useEffect, useState } from "react";
 const About = () => {
   const [spread, setSpread] = useState(false);
 
-  // Trigger animation on scroll
+  // Trigger spread ONLY when WORKS enters view
   useEffect(() => {
+    const works = document.getElementById("works");
+
+    if (!works) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setSpread(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
 
-    observer.observe(document.getElementById("about"));
+    observer.observe(works);
   }, []);
 
-  // 8 card colors
   const colors = [
     "#1C1C1C",
     "#FF7EDF",
@@ -30,31 +33,28 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen bg-[#FDF9F5] pt-20 pb-24">
+    <section id="about" className="min-h-screen bg-[#FDF9F5] pt-20 pb-28">
 
       {/* VRINDA DIXIT */}
       <div className="text-center mb-14">
         <h1 className="text-[170px] md:text-[200px] font-[Tahoma] font-extrabold text-[#5862E9] leading-none">
-          VRINDA <br />
-          DIXIT
+          VRINDA <br /> DIXIT
         </h1>
       </div>
 
-      {/* CARD CONTAINER */}
-      <div className="relative h-[250px] flex justify-center select-none">
+      {/* Card Animation Container */}
+      <div className="relative h-[250px] flex justify-center">
 
         {colors.map((c, i) => {
-          // Position when stacked (default)
           const stackedX = (i - 3.5) * 12;  
           const stackedRot = (i - 3.5) * 12;
 
-          // Position when spread (animation)
           const spreadX = (i - 3.5) * 170;
 
           return (
             <div
               key={i}
-              className="absolute w-[140px] h-[180px] rounded-xl shadow-xl transition-all duration-[1300ms] ease-[cubic-bezier(.25,.8,.25,1)]"
+              className="absolute w-[140px] h-[180px] rounded-xl shadow-lg transition-all duration-[1200ms] ease-[cubic-bezier(.25,.8,.25,1)]"
               style={{
                 backgroundColor: c,
                 transform: spread
@@ -66,6 +66,7 @@ const About = () => {
         })}
 
       </div>
+
     </section>
   );
 };
