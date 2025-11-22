@@ -1,61 +1,70 @@
-import React from "react";
-import { motion } from "framer-motion";
-
-const colors = [
-  "#000000", // black
-  "#FF7EDF", // pink
-  "#95C1FF", // blue-lavender
-  "#E3FF3D", // yellow-green
-  "#B49CFF", // light purple
-  "#FF6A4A", // orange
-];
+import React, { useEffect, useState } from "react";
 
 const About = () => {
-  return (
-    <section
-      id="about"
-      className="w-full min-h-screen bg-[#FDF9F5] flex flex-col justify-start items-center pt-20"
-    >
-      {/* BIG TITLE */}
-      <h1 className="text-[150px] leading-[120px] font-[Tahoma] text-[#5862E9] font-extrabold text-center">
-        VRINDA <br /> DIXIT
-      </h1>
+  const [spread, setSpread] = useState(false);
 
-      {/* FAN ANIMATION — COLOR CARDS */}
-      <div className="relative mt-[-180px] w-[300px] h-[300px] group">
-        {colors.map((clr, i) => (
-          <motion.div
-            key={i}
-            className="absolute left-1/2 top-1/2 w-[180px] h-[240px] rounded-xl shadow-xl"
-            style={{ backgroundColor: clr }}
-            initial={{
-              x: "-50%",
-              y: "-50%",
-              rotate: 0,
-            }}
-            whileHover={{
-              rotate: (i - 3) * 12, // spread left/right
-              x: `${(i - 3) * 22}px`,
-              y: `${(Math.abs(i - 3) * -8)}px`,
-              transition: { duration: 0.5, type: "spring" },
-            }}
-          />
-        ))}
+  // Trigger animation on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setSpread(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(document.getElementById("about"));
+  }, []);
+
+  // 8 card colors
+  const colors = [
+    "#1C1C1C",
+    "#FF7EDF",
+    "#8FA7FF",
+    "#D6FF3E",
+    "#B69CFF",
+    "#FF755A",
+    "#1C1C1C",
+    "#FF70D4",
+  ];
+
+  return (
+    <section id="about" className="min-h-screen bg-[#FDF9F5] pt-20 pb-24">
+
+      {/* VRINDA DIXIT */}
+      <div className="text-center mb-14">
+        <h1 className="text-[170px] md:text-[200px] font-[Tahoma] font-extrabold text-[#5862E9] leading-none">
+          VRINDA <br />
+          DIXIT
+        </h1>
       </div>
 
-      {/* LEFT + RIGHT TEXT BLOCKS */}
-      <div className="w-full max-w-7xl mt-10 flex justify-between px-20 text-[#222] text-[14px] leading-relaxed">
-        <p className="max-w-sm">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+      {/* CARD CONTAINER */}
+      <div className="relative h-[250px] flex justify-center select-none">
 
-        <p className="max-w-sm">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-          sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        {colors.map((c, i) => {
+          // Position when stacked (default)
+          const stackedX = (i - 3.5) * 12;  
+          const stackedRot = (i - 3.5) * 12;
+
+          // Position when spread (animation)
+          const spreadX = (i - 3.5) * 170;
+
+          return (
+            <div
+              key={i}
+              className="absolute w-[140px] h-[180px] rounded-xl shadow-xl transition-all duration-[1300ms] ease-[cubic-bezier(.25,.8,.25,1)]"
+              style={{
+                backgroundColor: c,
+                transform: spread
+                  ? `translateX(${spreadX}px) rotate(0deg)`
+                  : `translateX(${stackedX}px) rotate(${stackedRot}deg)`,
+              }}
+            ></div>
+          );
+        })}
+
       </div>
     </section>
   );
