@@ -1,72 +1,68 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const colors = [
+  "#1C1C1C",
+  "#FF7EDF",
+  "#8FA7FF",
+  "#D6FF3E",
+  "#B69CFF",
+  "#FF755A",
+  "#1C1C1C",
+  "#FF70D4",
+];
 
 const About = () => {
-  const [spread, setSpread] = useState(false);
+  const aboutRef = useRef(null);
+  const worksRef = document.getElementById("works");
 
-  useEffect(() => {
-    const about = document.getElementById("about");
+  // useScroll reference for ABOUT → WORKS distance
+  const { scrollYProgress } = useScroll({
+    target: aboutRef,
+    offset: ["start start", "end start"], 
+  });
 
-    if (!about) return;
+  // For each card, create its own scroll-driven transform
+  const cardTransforms = colors.map((c, i) => {
+    const stackX = (i - 3.5) * 12; // tighter stack
+    const stackR = (i - 3.5) * 10;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const e = entries[0];
+    const lineX = (i - 3.5) * 240; // faster spread
 
-        // When ABOUT section is at least 40% visible → expand
-        if (e.intersectionRatio > 0.4) {
-          setSpread(true);
-        } else {
-          setSpread(false);
-        }
-      },
-      { threshold: [0, 0.2, 0.4, 0.6, 1] }
-    );
 
-    observer.observe(about);
-  }, []);
+    const x = useTransform(scrollYProgress, [0, 1], [stackX, lineX]);
+    const rotate = useTransform(scrollYProgress, [0, 1], [stackR, 0]);
 
-  const colors = [
-    "#1C1C1C",
-    "#FF7EDF",
-    "#8FA7FF",
-    "#D6FF3E",
-    "#B69CFF",
-    "#FF755A",
-    "#1C1C1C",
-    "#FF70D4",
-  ];
+    return { x, rotate };
+  });
 
   return (
     <section
       id="about"
-      className="min-h-screen bg-[#FDF9F5] flex flex-col items-center justify-start pt-32"
+      ref={aboutRef}
+      className="min-h-screen bg-[#FDF9F5] pt-32 flex flex-col items-center pb-20"
     >
-      {/* HUGE VRINDA DIXIT */}
-      <h1 className="text-[170px] md:text-[200px] font-[Bebas Nue] text-[#5862E9] font-extrabold leading-none text-center mb-8">
+      {/* TITLE */}
+      <h1
+        className="text-[180px] leading-[160px] text-[#5862E9] font-extrabold text-center mb-12"
+        style={{ fontFamily: "Bebas Neue, sans-serif" }}
+      >
         VRINDA <br /> DIXIT
       </h1>
 
-      {/* Card stack animation */}
-      <div className="relative h-[260px] w-full flex justify-center">
-        {colors.map((c, i) => {
-          const stackedX = (i - 3.5) * 12; // tight stack
-          const stackedRot = (i - 3.5) * 10;
-
-          const spreadX = (i - 3.5) * 170; // final horizontal position
-
-          return (
-            <div
-              key={i}
-              className="absolute w-[150px] h-[200px] rounded-xl shadow-lg transition-all duration-[1400ms] ease-[cubic-bezier(.25,.8,.25,1)]"
-              style={{
-                backgroundColor: c,
-                transform: spread
-                  ? `translateX(${spreadX}px) rotate(0deg)`
-                  : `translateX(${stackedX}px) rotate(${stackedRot}deg)`,
-              }}
-            ></div>
-          );
-        })}
+      {/* CARD ANIMATION */}
+      <div className="relative h-[260px] flex justify-center w-full select-none">
+        {colors.map((c, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-[150px] h-[200px] rounded-xl shadow-lg"
+            style={{
+              backgroundColor: c,
+              x: cardTransforms[i].x,
+              rotate: cardTransforms[i].rotate,
+            }}
+          ></motion.div>
+        ))}
       </div>
     </section>
   );
