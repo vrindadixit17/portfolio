@@ -1,82 +1,95 @@
-// src/components/Navbar.jsx
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const links = ["Home", "About", "Works", "Services", "Contact"];
+const navItems = ["Home", "About", "Works", "Contact"];
 
 const Navbar = () => {
-  const [compact, setCompact] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [compact, setCompact] = useState(false); // false = bottom, true = top-right
 
   useEffect(() => {
-    const onScroll = () => {
-      // when you scroll past most of the hero, make nav compact
-      const triggerY = window.innerHeight * 0.6;
-      setCompact(window.scrollY > triggerY);
+    const handleScroll = () => {
+      const sections = ["home", "about", "works", "contact"];
+      const scrollMid = window.scrollY + window.innerHeight / 2;
+
+      let found = false;
+      sections.forEach((sec) => {
+        const el = document.getElementById(sec);
+        if (!el) return;
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollMid >= top && scrollMid < top + height) {
+          setActiveSection(sec);
+          found = true;
+        }
+      });
+
+      if (!found && window.scrollY < 200) {
+        setActiveSection("home");
+      }
+
+      // 🔁 collapse when we reach ABOUT (or below)
+      const aboutEl = document.getElementById("about");
+      if (aboutEl) {
+        const trigger = aboutEl.offsetTop - 120; // tweak if needed
+        setCompact(window.scrollY >= trigger);
+      } else {
+        setCompact(window.scrollY > 400);
+      }
     };
 
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleClick = (id) => (e) => {
     e.preventDefault();
     const el = document.getElementById(id);
-    if (!el) return;
-    const top = el.offsetTop;
-    window.scrollTo({ top: top, behavior: "smooth" });
+    if (el) {
+      window.scrollTo({
+        top: el.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
   };
 
-  // 🔹 BIG NAV (bottom, like your hero pic)
-  if (!compact) {
-    return (
-      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-none">
-        <div className="flex items-center gap-10 md:gap-16 pointer-events-auto">
-          {/* left logo */}
-          <span className="font-[Italianno] text-[36px] md:text-[42px] text-[#FF7EDF]">
-            vrinda
-          </span>
-
-          {/* center links */}
-          <ul className="flex gap-6 md:gap-10 text-[14px] md:text-[16px] font-[Hanken_Grotesk] text-[#0A0F0D]">
-            {links.map((item) => {
-              const id = item.toLowerCase();
-              return (
-                <li key={item}>
-                  <button
-                    onClick={handleClick(id)}
-                    className="uppercase tracking-[0.15em] hover:text-[#5862E9] transition-colors"
-                  >
-                    {item}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-
-          {/* right "portfolio" */}
-          <span className="font-[Italianno] text-[36px] md:text-[42px] text-[#FF7EDF]">
-            portfolio
-          </span>
-        </div>
-      </nav>
-    );
-  }
-
-  // 🔹 COMPACT NAV (right side when scrolled)
   return (
-    <nav className="fixed top-1/2 right-4 -translate-y-1/2 z-40">
-      <div className="flex flex-col items-end gap-3 bg-white/40 backdrop-blur-md rounded-3xl px-3 py-4 shadow-md">
-        <span className="font-[Italianno] text-[24px] text-[#FF7EDF]">
+    <nav
+      className={`fixed z-50 transition-all duration-500 ${
+        compact
+          ? "top-6 right-6 left-auto translate-x-0"
+          : "bottom-6 left-1/2 -translate-x-1/2"
+      }`}
+    >
+      <div
+        className={`flex items-center gap-6 font-[Hanken_Grotesk] text-[14px] md:text-[15px] ${
+          compact
+            ? "bg-[#CDDF3D]/90 px-6 py-2 rounded-full shadow-md"
+            : "bg-transparent px-4 py-2"
+        }`}
+      >
+        {/* vrinda logo – stays, just shrinks into compact pill */}
+        <div className="text-[30px] md:text-[34px] font-[Italianno] text-[#5862E9] leading-none">
           vrinda
-        </span>
-        <ul className="flex flex-col gap-2 text-[13px] font-[Hanken_Grotesk] text-[#0A0F0D]">
-          {links.map((item) => {
+        </div>
+
+        <ul className="flex items-center gap-4 md:gap-6">
+          {navItems.map((item) => {
             const id = item.toLowerCase();
+            const isActive = activeSection === id;
             return (
               <li key={item}>
                 <button
                   onClick={handleClick(id)}
-                  className="uppercase tracking-[0.15em] hover:text-[#5862E9] transition-colors"
+                  className={`transition-all duration-300 px-3 py-1 rounded-full ${
+                    isActive
+                      ? compact
+                        ? "bg-[#FDF9F5] text-[#222222] font-semibold"
+                        : "border-b-2 border-[#CDDF3D] text-[#222222]"
+                      : compact
+                      ? "text-[#222222] hover:text-[#5862E9]"
+                      : "text-[#222222] hover:text-[#5862E9]"
+                  }`}
                 >
                   {item}
                 </button>
