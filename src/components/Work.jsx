@@ -1,90 +1,59 @@
 import React from "react";
-import Saree from "../assets/Saree.png"; // image for panel 3 (replace with yours!)
+import workImg from "../assets/me.png"; // replace with your real img
 
 const Works = () => {
   return (
-    <section
-      id="works"
-      className="w-full min-h-screen bg-[#FDF9F5] pt-10 pb-20"
-    >
-      {/* WORKS TITLE */}
-      <div className="text-left pl-10 mb-10">
-        <h1 className="inline-flex items-end space-x-2">
-          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
-            W
-          </span>
-          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
-            O
-          </span>
-          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
-            R
-          </span>
-          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
-            K
-          </span>
-          <span className="text-[#B494F9] font-[Tahoma] text-[80px] md:text-[110px] font-extrabold">
-            S
-          </span>
+    <section id="works" className="w-full bg-[#FDF9F5] pt-32">
 
-          <span className="font-[Italianno] text-[45px] md:text-[60px] text-[#B494F9] ml-4">
-            works
-          </span>
-          <span className="font-[Italianno] text-[35px] md:text-[50px] text-[#B494F9] ml-4">
-            give your ideas a glow up, take a look at some of my projects
-          </span>
-        </h1>
-      </div>
-
-      {/* LINE UNDER TITLE */}
-      <div className="w-full border-t border-[#222222] opacity-40"></div>
-
-      {/* PANELS */}
-      <div className="grid grid-cols-1 md:grid-cols-4 mt-10 h-screen">
-        {/* PANEL 1 */}
-        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
-          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+      {/* 5 Column Cards */}
+      <div className="grid grid-cols-5 w-full">
+        
+        {/* Card 1 */}
+        <div className="h-[650px] bg-[#1A1A1A] flex items-center justify-center">
+          <h1 className="text-[350px] font-[BebasNeue] text-[#D9FF33] leading-none">
             1
-          </span>
-
-          {/* Hover content */}
-          <div className="absolute inset-0 bg-[#1A1A1A] text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-            <p className="text-xl font-semibold">Project Coming Soon</p>
-          </div>
+          </h1>
         </div>
 
-        {/* PANEL 2 */}
-        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
-          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+        {/* Card 2 */}
+        <div className="h-[650px] bg-[#1A1A1A] flex items-center justify-center">
+          <h1 className="text-[350px] font-[BebasNeue] text-[#D9FF33] leading-none">
             2
-          </span>
-          <div className="absolute inset-0 bg-[#1A1A1A] text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-            <p className="text-xl font-semibold">Project Coming Soon</p>
-          </div>
+          </h1>
         </div>
 
-        {/* PANEL 3 — IMAGE SHOWS ON HOVER */}
-        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
-          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
-            3
-          </span>
-
+        {/* Card 3 – with image */}
+        <div className="h-[650px] bg-[#1A1A1A] flex items-center justify-center overflow-hidden">
           <img
-            src={Saree}
-            alt="Project 3"
-            className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500"
+            src={workImg}
+            alt="work"
+            className="h-full w-full object-cover"
           />
         </div>
 
-        {/* PANEL 4 */}
-        <div className="relative bg-[#1A1A1A] flex items-center justify-center overflow-hidden group">
-          <span className="text-[#CDDF3D] font-[Tahoma] text-[180px] md:text-[250px] font-extrabold group-hover:opacity-0 transition-all duration-300">
+        {/* Card 4 */}
+        <div className="h-[650px] bg-[#1A1A1A] flex items-center justify-center">
+          <h1 className="text-[350px] font-[BebasNeue] text-[#D9FF33] leading-none">
             4
-          </span>
-
-          <div className="absolute inset-0 bg-[#1A1A1A] text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-            <p className="text-xl font-semibold">Project Coming Soon</p>
-          </div>
+          </h1>
         </div>
+
+        {/* Card 5 */}
+        <div className="h-[650px] bg-[#1A1A1A] flex items-center justify-center">
+          <h1 className="text-[350px] font-[BebasNeue] text-[#D9FF33] leading-none">
+            5
+          </h1>
+        </div>
+
+      </div>
+
+      {/* Bottom captions */}
+      <div className="grid grid-cols-5 text-center text-[12px] mt-6 px-6 text-[#C58DF2] leading-relaxed">
+        <p>Lorem ipsum dolor sit amet… Ut enim ad minim</p>
+        <p>Lorem ipsum dolor sit amet… Ut enim ad minim</p>
+        <p>Lorem ipsum dolor sit amet… Ut enim ad minim</p>
+        <p>Lorem ipsum dolor sit amet… Ut enim ad minim</p>
+        <p>Lorem ipsum dolor sit amet… Ut enim ad minim</p>
       </div>
     </section>
   );
