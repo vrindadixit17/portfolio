@@ -1,95 +1,40 @@
-import React, { useState, useEffect } from "react";
+// src/components/Navbar.jsx
+import React from "react";
 
-const Navbar = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const [active, setActive] = useState("home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "about", "works", "services"];
-
-      let current = "home";
-      const scrollpos = window.scrollY + window.innerHeight * 0.3;
-
-      sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el && scrollpos >= el.offsetTop) current = id;
-      });
-
-      setActive(current);
-
-      const aboutSection = document.getElementById("about");
-      if (aboutSection && window.scrollY >= aboutSection.offsetTop - 120) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+export default function Navbar() {
   return (
-    <nav
-      className={`
-        fixed z-50 transition-all duration-500 
-        ${collapsed ? "top-4 right-6 w-auto" : "top-6 left-0 w-full"}
-      `}
-    >
-      <div
-        className={`
-          flex items-center transition-all duration-500
-          ${collapsed ? "justify-end gap-6" : "justify-center gap-14"}
-        `}
-      >
-        {/* Logo (only visible when expanded) */}
-        {!collapsed && (
-          <div className="absolute left-10 text-[44px] font-[Italianno] text-[#F08BD2]">
-            vrinda
-          </div>
-        )}
-
-        {/* NAV LINKS */}
-        <ul
-          className={`
-            flex items-center transition-all duration-500
-            ${collapsed ? "gap-4 text-[15px]" : "gap-10 text-[20px]"}
-            font-[Hanken_Grotesk] font-semibold
-          `}
-        >
-          {["home", "about", "works", "services", "works"].map((item) => (
-            <li key={item} className="relative">
-              {/* Pink pill highlight */}
-              {active === item && (
-                <span
-                  className="
-                    absolute inset-0 -z-10 
-                    bg-[#FF7EDF]
-                    rounded-full
-                    px-4 py-1 
-                    transition-all duration-300
-                  "
-                ></span>
-              )}
-
-              <a
-                href={`#${item}`}
-                className={`
-                  px-4 py-1 
-                  transition-all duration-300 
-                  ${active === item ? "text-black" : "text-[#222] hover:text-[#F08BD2]"}
-                `}
-              >
-                {item.toUpperCase()}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <header className="flex items-center justify-between py-6">
+      <div className="flex items-center gap-4">
+        <div className="text-[var(--pink)] font-italianno text-2xl select-none">vrinda</div>
       </div>
-    </nav>
-  );
-};
 
-export default Navbar;
+      <nav className="hidden md:flex gap-8 items-center font-semibold text-sm tracking-wider">
+        <a className="hover:opacity-80" href="#home">HOME</a>
+        <a className="hover:opacity-80" href="#about">ABOUT</a>
+        <a className="hover:opacity-80" href="#works">WORKS</a>
+        <a className="hover:opacity-80" href="#services">SERVICES</a>
+        <a className="hover:opacity-80" href="#work-two">WORKS</a>
+      </nav>
+
+      <div className="hidden md:block">
+        <a
+          href="#contact"
+          className="px-4 py-2 rounded-full text-sm font-medium text-white nav-pill"
+        >
+          portfolio
+        </a>
+      </div>
+
+      {/* mobile */}
+      <div className="md:hidden">
+        <button aria-label="open menu" className="p-2 border rounded">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="2" rx="1" fill="#222"/>
+            <rect y="6" width="22" height="2" rx="1" fill="#222"/>
+            <rect y="12" width="22" height="2" rx="1" fill="#222"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+  );
+}

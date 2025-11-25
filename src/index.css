@@ -2,29 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --heading-font: "Bebas Neue", sans-serif;
-  --body-font: "Poppins", sans-serif;
+
+/* globals.css - import this in index.js or your main CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Italianno&display=swap');
+
+:root{
+  --coral: #ED6951;
+  --dark: #222222;
+  --pink:  #FF7EDF;
+  --lav:   #B494F9;
+  --neon:  #DCFA40;
+  --sky:   #82A0FE;
+  --blue:  #5862E9;
+
+  --bg: #FBF8F6;
+  --text: var(--dark);
 }
 
-body {
-  font-family: var(--body-font);
-}
+/* font utilities */
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-italianno { font-family: 'Italianno', cursive; }
 
-html {
-  scroll-behavior: smooth;
+/* small helper classes not in Tailwind */
+.nav-pill {
+  background: linear-gradient(90deg, var(--pink), var(--coral));
 }
+.tile-stack { transform: rotate(-12deg); }
+.big-number { color: var(--neon); font-weight:700; }
 
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 15s linear infinite;
-}
