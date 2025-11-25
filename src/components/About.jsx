@@ -1,71 +1,45 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+// src/components/Hero.jsx
+import React from "react";
 
-const colors = [
-  "#1C1C1C",
-  "#FF7EDF",
-  "#8FA7FF",
-  "#D6FF3E",
-  "#B69CFF",
-  "#FF755A",
-  "#1C1C1C",
-  "#FF70D4",
-];
-
-const About = () => {
-  const aboutRef = useRef(null);
-  const worksRef = document.getElementById("works");
-
-  // useScroll reference for ABOUT → WORKS distance
-  const { scrollYProgress } = useScroll({
-    target: aboutRef,
-    offset: ["start start", "end start"], 
-  });
-
-  // For each card, create its own scroll-driven transform
-  const cardTransforms = colors.map((c, i) => {
-    const stackX = (i - 3.5) * 12; // tighter stack
-    const stackR = (i - 3.5) * 10;
-
-    const lineX = (i - 3.5) * 240; // faster spread
-
-
-    const x = useTransform(scrollYProgress, [0, 1], [stackX, lineX]);
-    const rotate = useTransform(scrollYProgress, [0, 1], [stackR, 0]);
-
-    return { x, rotate };
-  });
-
+/* uses image at /mnt/data/landing.jpg */
+export default function Hero() {
   return (
-    <section
-      id="about"
-      ref={aboutRef}
-      className="min-h-screen bg-[#FDF9F5] pt-32 flex flex-col items-center pb-20"
-    >
-      {/* TITLE */}
-      <h1
-        className="text-[180px] leading-[160px] text-[#5862E9] font-extrabold text-center mb-12"
-        style={{ fontFamily: "Bebas Neue, sans-serif" }}
-      >
-        VRINDA <br /> DIXIT
-      </h1>
-
-      {/* CARD ANIMATION */}
-      <div className="relative h-[260px] flex justify-center w-full select-none">
-        {colors.map((c, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-[150px] h-[200px] rounded-xl shadow-lg"
-            style={{
-              backgroundColor: c,
-              x: cardTransforms[i].x,
-              rotate: cardTransforms[i].rotate,
-            }}
-          ></motion.div>
+    <section id="home" className="py-8">
+      {/* device mockups row */}
+      <div className="flex justify-center gap-6 overflow-x-auto pb-6">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div key={i} className="flex-shrink-0 w-[160px] md:w-[200px] device-frame">
+            <div className="h-[320px] md:h-[360px] bg-white rounded-lg overflow-hidden flex items-center justify-center">
+              <img src="/mnt/data/landing.jpg" alt={`device-${i}`} className="object-cover h-full w-full" />
+            </div>
+          </div>
         ))}
+      </div>
+
+      {/* big name + central stacked tile */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-6">
+        <div className="md:w-1/3 text-left">
+          <p className="text-sm font-semibold uppercase tracking-widest">vrinda</p>
+          <h1 className="font-bebas text-[6rem] md:text-[8rem] leading-none text-[var(--blue)]">VRINDA<br/>DIXIT</h1>
+        </div>
+
+        <div className="w-full md:w-1/3 flex justify-center">
+          <div className="relative">
+            {/* stacked colorful card */}
+            <div className="absolute -left-6 -top-6 w-36 h-44 rounded-xl" style={{background: 'var(--lav)'}} />
+            <div className="absolute -right-6 top-6 w-36 h-44 rounded-xl" style={{background: 'var(--sky)'}} />
+            <div className="w-44 h-56 rounded-xl bg-[var(--pink)] flex items-center justify-center tile-stack">
+              <div className="w-36 h-44 rounded-md bg-white/10" />
+            </div>
+          </div>
+        </div>
+
+        <div className="md:w-1/3 text-sm">
+          <p className="text-[14px] leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Short intro about you goes here — what you design, build and love.
+          </p>
+        </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}
