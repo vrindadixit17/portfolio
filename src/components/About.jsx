@@ -17,20 +17,6 @@ export default function About() {
 
   return (
     <section id="about" className="pt-10 pb-20">
-      {/* TOP NAV BAR FOR THIS SECTION */}
-      <div className="flex justify-end gap-8 mb-6 font-semibold text-sm tracking-wide">
-        <a href="#home">HOME</a>
-        <a
-          href="#about"
-          className="px-3 py-1 rounded-md text-white"
-          style={{ background: "var(--pink)" }}
-        >
-          ABOUT
-        </a>
-        <a href="#works">WORKS</a>
-        <a href="#services">SERVICES</a>
-        <a href="#works">WORKS</a>
-      </div>
 
       {/* MAIN GRID */}
       <div className="grid grid-cols-1 md:grid-cols-3 items-center relative">
@@ -56,23 +42,7 @@ export default function About() {
             VRINDA<br />DIXIT
           </h1>
 
-          {/* STACKED CARDS */}
-          <div className="absolute top-1/2 -translate-y-1/2">
-            <div className="relative w-44 h-56">
-              {/* background tilted layers */}
-              <div className="absolute inset-0 bg-[var(--pink)] rounded-xl rotate-[-10deg] scale-110"></div>
-              <div className="absolute inset-0 bg-[var(--lav)] rounded-xl rotate-[8deg] scale-105"></div>
-
-              {/* main polaroid */}
-              <div className="absolute inset-0 bg-[var(--pink)] rounded-xl p-3 shadow-lg rotate-[3deg]">
-                <img
-                  src={centerImg}
-                  className="w-full h-full object-cover rounded-md"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          
 
         {/* RIGHT TEXT */}
         <div className="text-center md:text-left px-6 md:pl-10 leading-relaxed text-sm">
