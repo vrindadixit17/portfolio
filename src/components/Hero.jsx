@@ -1,48 +1,34 @@
+// src/components/Home.jsx
 import React from "react";
 
-// Correct imports from your assets folder
-import phone1 from "../assets/Screenshot 2025-11-20 192853.png";
-import phone2 from "../assets/Screenshot 2025-11-20 192903.png";
-import phone3 from "../assets/Screenshot 2025-11-20 192912.png";
-import phone4 from "../assets/Screenshot 2025-11-20 192918.png";
-import phone5 from "../assets/Screenshot 2025-11-20 192924.png";
+// Import images from assets
+import img1 from "../assets/Screenshot 2025-11-20 192853.png";
+import img2 from "../assets/Screenshot 2025-11-20 192903.png";
+import img3 from "../assets/Screenshot 2025-11-20 192912.png";
+import img4 from "../assets/Screenshot 2025-11-20 192918.png";
+import img5 from "../assets/Screenshot 2025-11-20 192924.png";
 
-const Hero = () => {
+export default function Home() {
+  const images = [img1, img2, img3, img4, img5];
+
   return (
-    <section
-      id="home"
-      className="w-full min-h-screen bg-[#FDF9F5] flex flex-col items-center justify-center px-4 md:px-10"
-    >
-      {/* row of 5 phone mockups */}
-      <div className="flex flex-wrap md:flex-nowrap justify-center gap-6 md:gap-10">
-        <img
-          src={phone1}
-          alt="phone 1"
-          className="w-[160px] md:w-[220px] h-auto object-contain"
-        />
-        <img
-          src={phone2}
-          alt="phone 2"
-          className="w-[160px] md:w-[220px] h-auto object-contain"
-        />
-        <img
-          src={phone3}
-          alt="phone 3"
-          className="w-[160px] md:w-[220px] h-auto object-contain"
-        />
-        <img
-          src={phone4}
-          alt="phone 4"
-          className="w-[160px] md:w-[220px] h-auto object-contain"
-        />
-        <img
-          src={phone5}
-          alt="phone 5"
-          className="w-[160px] md:w-[220px] h-auto object-contain"
-        />
+    <section id="home" className="py-10">
+      <div className="flex justify-center gap-8 overflow-x-auto px-4">
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className="device-frame w-[180px] md:w-[220px] flex-shrink-0 bg-black"
+          >
+            <div className="h-[360px] md:h-[400px] bg-white rounded-xl overflow-hidden">
+              <img
+                src={img}
+                alt={`screen-${i}`}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
