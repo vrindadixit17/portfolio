@@ -1,33 +1,49 @@
+/* Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ----------- GLOBAL FONT + COLOR SETUP ----------- */
 
-/* globals.css - import this in index.js or your main CSS */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Italianno&display=swap');
 
-:root{
+/* Color Variables */
+:root {
   --coral: #ED6951;
   --dark: #222222;
-  --pink:  #FF7EDF;
-  --lav:   #B494F9;
-  --neon:  #DCFA40;
-  --sky:   #82A0FE;
-  --blue:  #5862E9;
+  --pink: #FF7EDF;
+  --lav: #B494F9;
+  --neon: #DCFA40;
+  --sky: #82A0FE;
+  --blue: #5862E9;
 
   --bg: #FBF8F6;
   --text: var(--dark);
 }
 
-/* font utilities */
-.font-bebas { font-family: 'Bebas Neue', sans-serif; }
-.font-italianno { font-family: 'Italianno', cursive; }
+/* Font Utilities */
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
+.font-italianno {
+  font-family: 'Italianno', cursive;
+}
 
-/* small helper classes not in Tailwind */
+/* Utility Classes */
 .nav-pill {
   background: linear-gradient(90deg, var(--pink), var(--coral));
 }
-.tile-stack { transform: rotate(-12deg); }
-.big-number { color: var(--neon); font-weight:700; }
 
+.big-number {
+  color: var(--neon);
+  font-weight: 700;
+  line-height: 1;
+}
 
+.device-frame {
+  border: 10px solid #111;
+  border-radius: 28px;
+  padding: 12px;
+  background: #000;
+}
