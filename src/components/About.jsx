@@ -1,45 +1,106 @@
-// src/components/Hero.jsx
+// src/components/About.jsx
 import React from "react";
 
-/* uses image at /mnt/data/landing.jpg */
-export default function Hero() {
+// your center polaroid image
+import centerImg from "../assets/about me center.png"; 
+// replace with your actual image inside assets
+
+export default function About() {
+  const swatches = [
+    "var(--pink)",
+    "var(--sky)",
+    "var(--coral)",
+    "var(--neon)",
+    "var(--lav)",
+    "var(--pink)"
+  ];
+
   return (
-    <section id="home" className="py-8">
-      {/* device mockups row */}
-      <div className="flex justify-center gap-6 overflow-x-auto pb-6">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="flex-shrink-0 w-[160px] md:w-[200px] device-frame">
-            <div className="h-[320px] md:h-[360px] bg-white rounded-lg overflow-hidden flex items-center justify-center">
-              <img src="/mnt/data/landing.jpg" alt={`device-${i}`} className="object-cover h-full w-full" />
+    <section id="about" className="pt-10 pb-20">
+      {/* TOP NAV BAR FOR THIS SECTION */}
+      <div className="flex justify-end gap-8 mb-6 font-semibold text-sm tracking-wide">
+        <a href="#home">HOME</a>
+        <a
+          href="#about"
+          className="px-3 py-1 rounded-md text-white"
+          style={{ background: "var(--pink)" }}
+        >
+          ABOUT
+        </a>
+        <a href="#works">WORKS</a>
+        <a href="#services">SERVICES</a>
+        <a href="#works">WORKS</a>
+      </div>
+
+      {/* MAIN GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-3 items-center relative">
+        
+        {/* LEFT TEXT */}
+        <div className="text-center md:text-right px-6 md:pr-10 leading-relaxed text-sm">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
+            dolor sit amet, consectetur.
+          </p>
+        </div>
+
+        {/* CENTER BIG TEXT + STACKED IMAGE */}
+        <div className="relative flex flex-col items-center justify-center">
+          {/* BIG NAME */}
+          <h1 className="font-bebas text-[22vw] md:text-[12rem] leading-none text-[var(--blue)] text-center">
+            VRINDA<br />DIXIT
+          </h1>
+
+          {/* STACKED CARDS */}
+          <div className="absolute top-1/2 -translate-y-1/2">
+            <div className="relative w-44 h-56">
+              {/* background tilted layers */}
+              <div className="absolute inset-0 bg-[var(--pink)] rounded-xl rotate-[-10deg] scale-110"></div>
+              <div className="absolute inset-0 bg-[var(--lav)] rounded-xl rotate-[8deg] scale-105"></div>
+
+              {/* main polaroid */}
+              <div className="absolute inset-0 bg-[var(--pink)] rounded-xl p-3 shadow-lg rotate-[3deg]">
+                <img
+                  src={centerImg}
+                  className="w-full h-full object-cover rounded-md"
+                />
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* RIGHT TEXT */}
+        <div className="text-center md:text-left px-6 md:pl-10 leading-relaxed text-sm">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
+            dolor sit amet, consectetur.
+          </p>
+        </div>
+
+      </div>
+
+      {/* COLOR SWATCHES */}
+      <div className="mt-20 flex justify-center gap-6 overflow-x-auto px-4">
+        {swatches.map((c, i) => (
+          <div
+            key={i}
+            className="w-28 h-36 md:w-32 md:h-40 rounded-xl flex-shrink-0"
+            style={{ background: c }}
+          ></div>
         ))}
       </div>
 
-      {/* big name + central stacked tile */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-6">
-        <div className="md:w-1/3 text-left">
-          <p className="text-sm font-semibold uppercase tracking-widest">vrinda</p>
-          <h1 className="font-bebas text-[6rem] md:text-[8rem] leading-none text-[var(--blue)]">VRINDA<br/>DIXIT</h1>
-        </div>
-
-        <div className="w-full md:w-1/3 flex justify-center">
-          <div className="relative">
-            {/* stacked colorful card */}
-            <div className="absolute -left-6 -top-6 w-36 h-44 rounded-xl" style={{background: 'var(--lav)'}} />
-            <div className="absolute -right-6 top-6 w-36 h-44 rounded-xl" style={{background: 'var(--sky)'}} />
-            <div className="w-44 h-56 rounded-xl bg-[var(--pink)] flex items-center justify-center tile-stack">
-              <div className="w-36 h-44 rounded-md bg-white/10" />
-            </div>
-          </div>
-        </div>
-
-        <div className="md:w-1/3 text-sm">
-          <p className="text-[14px] leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Short intro about you goes here — what you design, build and love.
-          </p>
-        </div>
-      </div>
     </section>
   );
 }
