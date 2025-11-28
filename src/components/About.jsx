@@ -1,8 +1,6 @@
 // src/components/About.jsx
 import React from "react";
-
-// import the exact PNG you gave
-import centerImg from "../assets/about me center.png";
+import centerImg from "../assets/about me center.png"; // your PNG
 
 export default function About() {
   const swatches = [
@@ -11,7 +9,10 @@ export default function About() {
     "var(--coral)",
     "var(--neon)",
     "var(--lav)",
-    "var(--pink)"
+    "var(--pink)",
+    "var(--sky)",
+    "var(--coral)",
+    "var(--neon)",
   ];
 
   return (
@@ -38,49 +39,47 @@ export default function About() {
         {/* LEFT TEXT */}
         <div className="text-center md:text-right px-6 md:pr-10 leading-relaxed text-sm">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
 
-        {/* CENTER BIG TEXT + IMAGE */}
+        {/* CENTER BIG TEXT + CENTER IMAGE */}
         <div className="relative flex flex-col items-center justify-center">
           
-          {/* BIG NAME */}
-          <h1 className="font-bebas text-[22vw] md:text-[12rem] leading-none text-[var(--blue)] text-center select-none">
+          {/* SMALLER BIG TEXT */}
+          <h1 className="font-bebas text-[16vw] md:text-[8rem] leading-none text-[var(--blue)] text-center select-none">
             VRINDA<br />DIXIT
           </h1>
 
-          {/* CENTER PNG */}
+          {/* SMALLER CENTER IMAGE */}
           <img
             src={centerImg}
-            className="absolute top-1/2 -translate-y-1/2 w-52 md:w-64 select-none"
+            className="absolute top-1/2 -translate-y-1/2 w-40 md:w-52 select-none"
             alt="about-center"
           />
+
         </div>
 
         {/* RIGHT TEXT */}
         <div className="text-center md:text-left px-6 md:pl-10 leading-relaxed text-sm">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis
-            aute irure dolor in reprehenderit in voluptate velit esse.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
         </div>
 
       </div>
 
-      {/* COLOR SWATCHES */}
-      <div className="mt-20 flex justify-center gap-6 overflow-x-auto px-4">
-        {swatches.map((c, i) => (
-          <div
-            key={i}
-            className="w-28 h-36 md:w-32 md:h-40 rounded-xl flex-shrink-0"
-            style={{ background: c }}
-          ></div>
-        ))}
+      {/* FULL WIDTH CONTINUOUS-MOVING BENTO COLOR STRIP */}
+      <div className="overflow-hidden mt-20 w-full">
+        <div className="flex animate-scroll gap-6 py-4">
+          {swatches.concat(swatches).map((c, i) => (
+            <div
+              key={i}
+              className="w-28 h-36 md:w-32 md:h-40 rounded-xl flex-shrink-0"
+              style={{ background: c }}
+            ></div>
+          ))}
+        </div>
       </div>
 
     </section>
