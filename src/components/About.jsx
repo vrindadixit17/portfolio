@@ -33,15 +33,15 @@ export default function About() {
         {/* CENTER BLOCK */}
 <div className="relative flex flex-col items-center justify-center">
 
-  {/* VRINDA — each letter separate */}
-  <div className="flex gap-[2vw] md:gap-8 font-bebas text-[15vw] md:text-[9rem] leading-none text-[var(--blue)] select-none">
+  {/* VRINDA — COMPACT */}
+  <div className="flex gap-[0.6vw] md:gap-2 font-bebas text-[12vw] md:text-[7rem] leading-[0.8] text-[var(--blue)] select-none tracking-[-0.04em]">
     {["V","R","I","N","D","A"].map((letter, i) => (
       <span key={i}>{letter}</span>
     ))}
   </div>
 
-  {/* DIXIT — each letter separate */}
-  <div className="flex gap-[2vw] md:gap-8 font-bebas text-[15vw] md:text-[9rem] leading-none text-[var(--blue)] select-none -mt-[1vw]">
+  {/* DIXIT — COMPACT */}
+  <div className="flex gap-[0.6vw] md:gap-2 font-bebas text-[12vw] md:text-[7rem] leading-[0.8] text-[var(--blue)] select-none tracking-[-0.04em] -mt-[0.5vw]">
     {["D","I","X","I","T"].map((letter, i) => (
       <span key={i}>{letter}</span>
     ))}
@@ -50,10 +50,11 @@ export default function About() {
   {/* CENTER IMAGE */}
   <img
     src={centerImg}
-    className="absolute top-1/2 -translate-y-[55%] w-32 md:w-48 select-none"
+    className="absolute top-1/2 -translate-y-[55%] w-28 md:w-40 select-none"
     alt="center"
   />
 </div>
+
 
 
         {/* RIGHT TEXT */}
