@@ -34,14 +34,14 @@ export default function About() {
 <div className="relative flex flex-col items-center justify-center">
 
   {/* VRINDA — COMPACT */}
-  <div className="flex gap-[0.6vw] md:gap-2 font-bebas text-[12vw] md:text-[7rem] leading-[0.8] text-[var(--blue)] select-none tracking-[-0.04em]">
+  <div className="flex gap-[0.6vw] md:gap-2 font-bebas text-[100vw] md:text-[12rem] leading-[0.8] text-[var(--blue)] select-none tracking-[-0.04em]">
     {["V","R","I","N","D","A"].map((letter, i) => (
       <span key={i}>{letter}</span>
     ))}
   </div>
 
   {/* DIXIT — COMPACT */}
-  <div className="flex gap-[0.6vw] md:gap-2 font-bebas text-[12vw] md:text-[7rem] leading-[0.8] text-[var(--blue)] select-none tracking-[-0.04em] -mt-[0.5vw]">
+  <div className="flex gap-[0.6vw] md:gap-2 font-bebas text-[100vw] md:text-[12rem] leading-[0.8] text-[var(--blue)] select-none tracking-[-0.04em] -mt-[0.5vw]">
     {["D","I","X","I","T"].map((letter, i) => (
       <span key={i}>{letter}</span>
     ))}
