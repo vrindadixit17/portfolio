@@ -24,50 +24,34 @@ export default function About() {
         {/* LEFT TEXT */}
         <div className="text-center md:text-right px-6 md:pr-10 leading-relaxed text-sm">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
         </div>
 
         {/* CENTER BLOCK */}
         <div className="relative flex flex-col items-center justify-center">
 
-          {/* VRINDA — COMPACT SPACING */}
-          <div className="
-            flex 
-            gap-[0.2vw] md:gap-[4px]
-            font-bebas 
-            text-[18vw] md:text-[10rem]
-            leading-[0.8]
-            text-[var(--blue)]
-            tracking-[-0.03em]
-            select-none
-          ">
-            {["V","R","I","N","D","A"].map((letter, i) => (
-              <span key={i}>{letter}</span>
-            ))}
-          </div>
+          {/* VRINDA DIXIT — EXACTLY LIKE YOUR REFERENCE */}
+          <h1
+  className="
+    font-spartan
+    text-[20vw] md:text-[11rem]
+    leading-[0.75]
+    tracking-[-0.01em]
+    text-center
+    text-[var(--blue)]
+    select-none
+  "
+>
+  VRINDA<br/>DIXIT
+</h1>
 
-          {/* DIXIT — COMPACT SPACING */}
-          <div className="
-            flex 
-            gap-[0.2vw] md:gap-[4px]
-            font-bebas 
-            text-[18vw] md:text-[10rem]
-            leading-[0.8]
-            text-[var(--blue)]
-            tracking-[-0.03em]
-            select-none
-            -mt-[1vw]
-          ">
-            {["D","I","X","I","T"].map((letter, i) => (
-              <span key={i}>{letter}</span>
-            ))}
-          </div>
 
-          {/* CENTER IMAGE */}
+
+          {/* CENTER IMAGE (polaroid PNG) */}
           <img
             src={centerImg}
-            className="absolute top-1/2 -translate-y-[55%] w-28 md:w-40 select-none"
+            className="absolute top-1/2 -translate-y-[60%] w-32 md:w-52 rotate-[3deg] drop-shadow-xl select-none"
             alt="center"
           />
         </div>
@@ -75,13 +59,13 @@ export default function About() {
         {/* RIGHT TEXT */}
         <div className="text-center md:text-left px-6 md:pl-10 leading-relaxed text-sm">
           <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
         </div>
 
       </div>
 
-      {/* FULL WIDTH CONTINUOUS MOVING STRIP */}
+      {/* FULL WIDTH CONTINUOUS MOVING COLOR STRIP */}
       <div className="overflow-hidden mt-20 w-full">
         <div className="flex animate-scroll gap-6 py-4">
           {swatches.concat(swatches).map((c, i) => (
