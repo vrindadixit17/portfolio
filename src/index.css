@@ -47,6 +47,12 @@
   font-weight: 800; /* gives the tall poster look */
 }
 
+.bebas-figma {
+  font-family: 'Bebas Neue', sans-serif;
+  transform: scaleY(1.45) scaleX(0.78);
+  transform-origin: center;
+  letter-spacing: -0.02em;
+}
 
 
 /* Utility Classes */
