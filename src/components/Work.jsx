@@ -19,7 +19,7 @@ export default function Works() {
           <div key={item.id} className="flex flex-col items-center">
             {/* NUMBER BOX */}
             <div
-              className="w-full h-[420px] flex items-center justify-center relative"
+              className="w-full h-[520px] flex items-center justify-center relative"
               style={{ background: "#0F0F0F" }}
             >
               {item.img ? (
@@ -40,7 +40,7 @@ export default function Works() {
             </div>
 
             {/* CAPTION */}
-            <p className="mt-4 px-4 text-center text-xs text-[#222] leading-relaxed">
+            <p className="mt-4 px-4 text-center text-xs text-[#5862E9] leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               <br />Ut enim ad minim
             </p>
