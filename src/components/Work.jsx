@@ -12,20 +12,6 @@ export default function Works() {
 
   return (
     <section id="works" className="pt-10 pb-16">
-      {/* TOP NAV INSIDE WORK SECTION (LIKE YOUR IMAGE) */}
-      <div className="flex justify-end gap-8 mb-6 font-semibold text-sm tracking-wide">
-        <a href="#home">HOME</a>
-        <a href="#about">ABOUT</a>
-        <a
-          href="#works"
-          className="px-3 py-1 rounded-md"
-          style={{ background: "var(--pink)" }}
-        >
-          WORKS
-        </a>
-        <a href="#services">SERVICES</a>
-        <a href="#work-two">WORKS</a>
-      </div>
 
       {/* COLUMNS */}
       <div className="grid grid-cols-1 md:grid-cols-5">
