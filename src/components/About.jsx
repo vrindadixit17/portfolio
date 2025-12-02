@@ -33,18 +33,18 @@ export default function About() {
 
           {/* VRINDA DIXIT — EXACTLY LIKE YOUR REFERENCE */}
           <h1
-  className="
-    font-spartan
-    text-[20vw] md:text-[11rem]
-    leading-[0.75]
-    tracking-[-0.01em]
-    text-center
-    text-[var(--blue)]
-    select-none
-  "
->
-  VRINDA<br/>DIXIT
-</h1>
+          className="
+            bebas-figma
+            text-[20vw] md:text-[11rem]
+            leading-[0.75]
+            tracking-[-0.01em]
+            text-center
+            text-[var(--blue)]
+            select-none
+          "
+        >
+          VRINDA<br/>DIXIT
+        </h1>
 
 
 

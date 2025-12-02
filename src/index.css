@@ -49,7 +49,7 @@
 
 .bebas-figma {
   font-family: 'Bebas Neue', sans-serif;
-  transform: scaleY(1.45) scaleX(0.78);
+  transform: scaleY(1.45) scaleX(0.9);
   transform-origin: center;
   letter-spacing: -0.02em;
 }
