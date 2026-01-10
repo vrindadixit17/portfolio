@@ -2,11 +2,11 @@
 import React from "react";
 
 // Import your phone screenshots
-import img1 from "../assets/Screenshot 2025-11-20 192853.png";
-import img2 from "../assets/Screenshot 2025-11-20 192903.png";
-import img3 from "../assets/Screenshot 2025-11-20 192912.png";
-import img4 from "../assets/Screenshot 2025-11-20 192918.png";
-import img5 from "../assets/Screenshot 2025-11-20 192924.png";
+import img1 from "../assets/1.png";
+import img2 from "../assets/2.png";
+import img3 from "../assets/3.png";
+import img4 from "../assets/4.png";
+import img5 from "../assets/5.png";
 
 export default function Home() {
   const images = [img1, img2, img3, img4, img5];
