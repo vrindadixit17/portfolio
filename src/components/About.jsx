@@ -58,41 +58,38 @@ export default function About() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div>
+        {/* RIGHT SIDE WRAPPER */}
+<div className="absolute top-32 left-[55%] w-[40%]">
 
-          <h3 className="font-italianno text-4xl text-[#5862E9] mb-4">
-            about me
-          </h3>
+  <h3 className="font-italianno text-4xl text-[#5862E9] mb-4">
+    about me
+  </h3>
 
-          <p className="text-sm leading-relaxed max-w-md mb-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam.
-          </p>
+  <p className="text-sm leading-relaxed mb-8">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
 
-          {/* IMAGE STACK */}
-          <div className="relative w-fit">
+  {/* IMAGE STACK */}
+  <div className="relative mt-10">
+    <img
+      src={mainImg}
+      className="w-[340px] rotate-[3deg]"
+      alt=""
+    />
+    <img
+      src={smallImg}
+      className="w-[200px] absolute -bottom-20 -left-20 rotate-[-5deg]"
+      alt=""
+    />
+  </div>
 
-            <img
-              src={mainImg}
-              alt=""
-              className="w-[340px] rotate-[3deg]"
-            />
+  <p className="text-xs leading-relaxed mt-28">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </p>
 
-            <img
-              src={smallImg}
-              alt=""
-              className="w-[200px] absolute -bottom-20 -left-20 rotate-[-5deg]"
-            />
+</div>
 
-          </div>
-
-          <p className="text-xs leading-relaxed max-w-md mt-28">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Excepteur sint occaecat cupidatat non proident.
-          </p>
-
-        </div>
       </div>
 
       {/* ===== LAYER 2: SKILL CARDS ===== */}

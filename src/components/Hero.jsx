@@ -19,7 +19,7 @@ export default function Hero() {
             <img
               src={img}
               alt={`phone-${index}`}
-              className="w-[180px] md:w-[220px] object-contain"
+              className="w-[180px] md:w-[220px] object-contain" 
             />
           </div>
         ))}
